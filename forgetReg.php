@@ -1,4 +1,5 @@
 <?php
+	include('smtp/PHPMailerAutoload.php');
 session_start();
    //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -20,10 +21,9 @@ session_start();
     Enter the following code to reset your password
     $generator";
     $headers = "From: airways.primero@gmail.com";
-	
-	include('smtp/PHPMailerAutoload.php');
-smtp_mailer();
-function smtp_mailer(){
+
+smtp_mailer($to_email,$subject,$body);
+function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
 	$mail->IsSMTP(); 
@@ -37,8 +37,8 @@ function smtp_mailer(){
 	$mail->Password = "primero12345";
 	$mail->SetFrom("airways.primero@gmail.com");
 	$mail->Subject = $subject;
-	$mail->Body =$body;
-	$mail->AddAddress($_POST['emailinp']);
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
 	$mail->SMTPOptions=array('ssl'=>array(
 		'verify_peer'=>false,
 		'verify_peer_name'=>false,
