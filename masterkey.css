@@ -55,6 +55,7 @@ nav ul a {
   color: black;
   text-transform: uppercase;
   font-size: 15px;
+  text-decoration: none;
 }
 nav ul li:hover, nav ul a:hover {
   color: lightseagreen;
@@ -65,13 +66,13 @@ nav ul li:active ,nav ul a:active {
 } 
 
 .row {
-  width: 100%;
-  max-width: 1080px;
-  margin: 0 auto;
-  position: relative;
-  margin-right: 10%;
-  padding-bottom: 2.5%;
-  margin-top: 5px;
+  width: 100% !important;
+  max-width: 1080px !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  margin-right: 10% !important;
+  padding-bottom: 2.5% !important;
+  margin-top: 5px !important;
 }
 .namelogo{
   float:left;
@@ -111,6 +112,33 @@ footer > div
     background-color: lightseagreen;
     height:250px ;
     margin-top: -7px;
+}
+.foot{
+  color: whitesmoke;
+}
+.footer-content{
+  text-align: center;
+}
+.foot .footer-content a{
+  color: whitesmoke;
+  text-decoration: none;
+}
+.foot .footer-content a :hover{
+  color: black;
+}
+.icons-footer{
+  text-align: center;
+}
+.icons-footer a{
+  color: whitesmoke;
+}
+.icons-footer a :hover{
+  color: black;
+}
+.copyright{
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 600px) {
