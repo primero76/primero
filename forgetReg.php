@@ -22,7 +22,7 @@ session_start();
 
     $generator";
     $headers = "From: airways.primero@gmail.com";
-    use index.php/smtp_mailer($to_email,$subject ,$body);
+    use smtp_mailer($to_email,$subject ,$body);
 	
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;    
