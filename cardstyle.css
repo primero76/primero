@@ -1,0 +1,101 @@
+*{
+    font-family: 'Poppins','sans-serif';
+}
+h3{
+    font-size: 36px;
+    text-decoration: underline;
+    color: lightseagreen;
+}
+.row {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    padding-bottom: 2.5%;
+    margin-top: 5px;
+  }
+.card-img-top{
+    width: 100%;
+    object-position: center;
+    height: 100%;
+}
+
+.card-img-top-2{
+    width: 100%;
+    object-position: center;
+    height: 100%;
+}
+.card-body{
+    position: absolute;
+    padding: 10px 10px;
+    height: 50%;
+}
+.card-body .card-title{
+    font-family: 'Sniglet', cursive;
+    margin-bottom: 0;
+    font-size: 40px;
+    text-align: center;
+    transition: all 400ms ease-in-out;
+}
+.card-body .card-text{
+    opacity: 0;
+    transform: translateY(60px);
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: rgba(255, 255, 255, 0.521);
+    transition: all 400ms ease-in-out;
+}
+.card-body2 .card-title{
+    font-size: 24px;
+}
+.card{
+    transition: 0.3s all ease-in-out;
+}
+.card:hover{
+    transform: scale(1.05);
+}
+.card:hover .card-body .card-text{
+    opacity: 1;
+    transform: translateY(0px);
+}
+.card:hover .card-body .card-title{
+    font-size: 36px;
+    background-color: rgba(255, 255, 255, 0.507);
+}
+
+.card2{
+    transition: 0.3s ease-in-out;
+}
+.card2:hover{
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.btn-book > button{
+    background-color: lightseagreen;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    padding: 14px 16px;
+    font-size: 18px;
+    font-weight:900;
+    margin: 0;
+  }
+
+  .btn-book{
+    padding: 8px 10px;
+    text-align: center;
+}
+
+.btn-book > p{
+    font-size: 18px;
+    font-weight:600;
+}
+
+.btn-book button:hover{
+    color: lightseagreen;
+    background-color: white;
+    transition: 500ms ;
+}
