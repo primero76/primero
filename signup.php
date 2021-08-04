@@ -19,7 +19,7 @@
         <div class="row">           
             <nav>
                 <ul>
-                    <li><i class="fa fa-home"></i><a href="about.html"> About Us</a></li>
+                    <li><i class="fa fa-home"></i><a href="index.php"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a href="book.html"> Book</a></li>
                     <li><i class="fa fa-tasks"></i><a href="#"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
