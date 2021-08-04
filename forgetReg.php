@@ -1,8 +1,7 @@
 <?php
-require_once('index.php');
-	session_start();
+session_start();
 
-    
+    include('index.php');
    //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
