@@ -16,14 +16,14 @@ session_start();
     $to_email = $_POST['emailinp'];
 
     $subject = "Password Reset";
-    $bod = "  Hi, This is Primero Avioinics, we have encounter a password reset request. If it is you then,
+    $body = "  Hi, This is Primero Avioinics, we have encounter a password reset request. If it is you then,
     Enter the following code to reset your password
     $generator";
     $headers = "From: airways.primero@gmail.com";
 	
 	include('smtp/PHPMailerAutoload.php');
-smtp_mailer($to_email,'Password Reset',$generator);
-function smtp_mailer($to,$subject,$body){
+smtp_mailer();
+function smtp_mailer(){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
 	$mail->IsSMTP(); 
@@ -37,8 +37,8 @@ function smtp_mailer($to,$subject,$body){
 	$mail->Password = "primero12345";
 	$mail->SetFrom("airways.primero@gmail.com");
 	$mail->Subject = $subject;
-	$mail->Body =$msg;
-	$mail->AddAddress($to);
+	$mail->Body =$body;
+	$mail->AddAddress($to_email);
 	$mail->SMTPOptions=array('ssl'=>array(
 		'verify_peer'=>false,
 		'verify_peer_name'=>false,
