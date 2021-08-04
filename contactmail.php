@@ -12,12 +12,12 @@ include('smtp/PHPMailerAutoload.php');
     $to_email = "airways.primero@gmail.com";
     $body = "";
 
-    $body.="From: ".$NAME. "\r\n" <br>;
-    $body.="Phone Number: ".$PHONE_NUM. "\r\n" <br>;
-    $body.="Email: ".$mail. "\r\n" <br>;
-    $body.="Message: ".$DESC. "\r\n" <br>;
+    $body.="From: ".$NAME. "\r\n";
+    $body.="Phone Number: ".$PHONE_NUM. "\r\n";
+    $body.="Email: ".$mail. "\r\n";
+    $body.="Message: ".$DESC. "\r\n"
   
-echo smtp_mailer($mail,'subject',$body);
+echo smtp_mailer($mail,$SUB,$body);
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
