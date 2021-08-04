@@ -2,8 +2,7 @@
     session_start();
     header('location:login.php');
     
-    $conn = mysqli_connect('localhost','root');
-    mysqli_select_db($conn,'flight_booking');
+    require_once 'connection.php';
     
     $emailAdd = $_POST['emailinp'];
     $password = $_POST['passwordinp'];
