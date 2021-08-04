@@ -126,8 +126,8 @@
         </table>   
     </div>
     <div class="row5">
-        <img src="AIRLINE-LOGO2.PNG">
-        <img src="AIRLINE-LOGO2.PNG" style="margin-left: 820px;"> 
+        <img src="AIRLINE-LOGO2.png">
+        <img src="AIRLINE-LOGO2.png" style="margin-left: 820px;"> 
     </div>
     </div>
     <?php
