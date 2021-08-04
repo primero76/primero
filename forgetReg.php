@@ -38,7 +38,7 @@ function smtp_mailer(){
 	$mail->SetFrom("airways.primero@gmail.com");
 	$mail->Subject = $subject;
 	$mail->Body =$body;
-	$mail->AddAddress($to_email);
+	$mail->AddAddress($_POST['emailinp']);
 	$mail->SMTPOptions=array('ssl'=>array(
 		'verify_peer'=>false,
 		'verify_peer_name'=>false,
