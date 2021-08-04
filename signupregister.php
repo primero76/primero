@@ -1,8 +1,7 @@
 <?php
+    require_once 'connection.php';
     session_start();
     header('location:login.php');
-    
-    require_once 'connection.php';
     
     $emailAdd = $_POST['emailinp'];
     $password = $_POST['passwordinp'];
