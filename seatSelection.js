@@ -8,7 +8,7 @@ function limit_checkbox(name,obj,max)
    var x=document.getElementsByName(name);
    for (var i=0; i < x.length; i++)
       {
-      if(x[i].checked && x.length < max)
+      if(x[i].checked)
          {
          count = count + 1;
          }
