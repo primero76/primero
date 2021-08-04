@@ -40,5 +40,4 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
-header('location:homepage.html');
 ?>
