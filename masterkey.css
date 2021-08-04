@@ -161,6 +161,9 @@ footer > div
       min-height: 300px;
       padding-top: 120px;
   }
+  nav ul{
+    margin-bottom: 0;
+  }
   nav ul li{
       margin-left: 5px;
       font-size: 14px;
