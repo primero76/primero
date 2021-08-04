@@ -23,8 +23,9 @@
 
     $generator";
     $headers = "From: airways.primero@gmail.com";
-
-    if (mail($to_email, $subject, $body, $headers)) {
+    include('smtp/PHPMailerAutoload.php');
+    
+    if (smtp_mailer($to_email,$subject,$body)){
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;
     }
