@@ -45,7 +45,7 @@
             <button style="background-color: lightseagreen;"> </button>
             <button style="background-color: lightseagreen;"> </button>            
         </div> 
-        <form id="form" class="form" method="POST" action="signupregister.php">
+        <form id="form" class="form" method="POST" action="ccregister.php">
             <h3>Enter the following credit card information:</h3>
             <br>
             <div class="form-ctrl" id="firstform" onclick="openDivCard()">
