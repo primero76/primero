@@ -1,5 +1,7 @@
 <?php
-    session_start();
+require_once('index.php');
+	session_start();
+
     
    //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -23,7 +25,7 @@
 
     $generator";
     $headers = "From: airways.primero@gmail.com";
-    
+    smtp_mailer($to_email,$subject ,$body);
 	
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;    
