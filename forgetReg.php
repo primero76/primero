@@ -22,8 +22,37 @@ session_start();
 
     $generator";
     $headers = "From: airways.primero@gmail.com";
-    use smtp_mailer($to_email,$subject ,$body);
 	
+	include('smtp/PHPMailerAutoload.php');
+$html='Msg';
+smtp_mailer('ashhadider2@gmail.com','subject',$html);
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->SMTPDebug  = 3;
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'tls'; 
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 587; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "airways.primero@gmail.com";
+	$mail->Password = "primero12345";
+	$mail->SetFrom("airways.primero@gmail.com");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		echo $mail->ErrorInfo;
+	}else{
+		return 'Sent';
+	}
+}
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;    
 ?>
