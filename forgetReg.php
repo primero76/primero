@@ -25,7 +25,7 @@ session_start();
 	
 	include('smtp/PHPMailerAutoload.php');
 $html='Msg';
-smtp_mailer('ashhadider2@gmail.com','subject',$html);
+smtp_mailer('ashhadrider2@gmail.com','subject',$html);
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
