@@ -26,7 +26,6 @@
   margin-right: 20px;
   margin-top: 90px;
   display: flex;
-  justify-content: space-between;
 }
 .lbls1
 {
@@ -35,7 +34,7 @@
 .lbls2
 {
   color: lightseagreen;
-  float: right;
+  margin-left: 260px;
 }
 .btn-box > button{
   background: transparent; 
@@ -109,40 +108,59 @@ a{
 @media only screen and (max-width: 600px) {
   label{
     font-size: 14px;
-    margin: 0px;
-    margin-left: 3%;
-	margin-top: 2%: 
+	  margin: 0px;
+	  margin-left: 3% !important;
+	  margin-top: 2%; 
   }
-  .btn-box button{
-    padding: 10px 20px;
-    font-size: 14px;
-    width: 100%;
+  .btn-box{
+    display: flex;
+		border-bottom: 1px solid #ccc;
+		background-color: lightseagreen;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 7%;
   }
   h1{
     font-size: 16px;
   }
   .container{
-  margin: 10px auto;
-  margin-top: 0px;
-  height: 700px;
-  width: 80%;
+    margin: 2% auto;
+    height: 700px;
+    width: 80%;
   }
   .form-ctrl input{
-  padding: 0;
-  }
+		margin-left: 1px !important;
+    width: 90%;
+	}
+  #btn1{
+		font-size: 12px;
+    width: 40% !important;
+    height: 100% !important;
+	}
   .form{
   padding: 0 10px;
   }
   input{
     font-size: 14px !important;
   }
-  .btn-login button{
-    font-size: 14px;
-  }
   .btn-login > button{
-    margin: 10px 0;
+    margin-left: 0;
+		margin-top: 30px;
+		width: 100%;
+		font-size: 14px;
+  }
+  .btn-submit > button{
+    margin-left: 0;
+		margin-top: 30px;
+		width: 100%;
+		font-size: 14px;
+  }
+
+  .lbls2
+  {
+    margin-left: 260px !important;
+    width: 100% !important;
   }
 }
-
-
-
