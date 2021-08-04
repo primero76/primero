@@ -1,6 +1,6 @@
 <?php
-session_start();
 include('smtp/PHPMailerAutoload.php');
+session_start();
    //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
@@ -17,13 +17,11 @@ include('smtp/PHPMailerAutoload.php');
     $to_email = $_POST['emailinp'];
 
     $sub = "Password Reset";
-    $one = "  Hi, This is Primero Avioinics, we have encounter a password reset request.If it is you then,
-    Enter the following code to reset your password
-    
-    
-    $generator";
+    $body = "  Hi, This is Primero Avioinics, we have encounter a password reset request.If it is you then,
+    Enter the following code to reset your password <> $generator <>";
 
-function smtp_mailer($to,$subject, $msg){
+    
+function smtp_mailer($to,$subject,$msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
 	$mail->IsSMTP(); 
@@ -50,7 +48,7 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
-smtp_mailer($_POST['emailinp'],$sub,$one);
+smtp_mailer($_SESSION['mail'],$sub,$body);
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;    
 ?>
