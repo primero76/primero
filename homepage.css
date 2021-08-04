@@ -3,11 +3,6 @@ body {
   background: white;
   font-weight: 300;
 }
-
-h1{
-  margin-left: 450px;
-
-}
 .row-homepage{
   margin-right: auto;
   margin-left: auto;
@@ -29,3 +24,21 @@ h1{
   font-size: 18px;
   line-height: 2;
 }  
+
+/*For Responsive*/
+
+@media only screen and (max-width: 600px) {
+  .subheading{
+    width: 90%;
+    font-size: 16px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .intro{
+    width: 90%;
+    font-size: 12px;
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  
+}
