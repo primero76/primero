@@ -45,7 +45,7 @@
                     <li><i class="fa fa-home"></i><a href="homepage.php"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage</a></li>
-                    <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
+                    <li><i class="fa fa-address-book"></i><a href="contact.php"> Contact Us</a></li>
                     <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
                 </ul>
             </nav>
