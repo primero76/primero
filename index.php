@@ -9,10 +9,10 @@ $active_group = 'default';
 $query_builder = TRUE;
 // Connect to DB
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
 include('smtp/PHPMailerAutoload.php');
- echo smtp_mailer('ashhadrider2@gmail.com','HEllo Jaani','Saala');
- function smtp_mailer($to,$subject, $msg){
+$html='Msg';
+echo smtp_mailer('ashhadrider2@gmail.com','subject',$html);
+function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
 	$mail->IsSMTP(); 
@@ -22,9 +22,9 @@ include('smtp/PHPMailerAutoload.php');
 	$mail->Port = 587; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "airways.primero@gmail.com";
+	$mail->Username = "airlines.primero@gmail.com";
 	$mail->Password = "primero12345";
-	$mail->SetFrom("airways.primero@gmail.com");
+	$mail->SetFrom("airlines.primero@gmail.com");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
@@ -33,5 +33,10 @@ include('smtp/PHPMailerAutoload.php');
 		'verify_peer_name'=>false,
 		'allow_self_signed'=>false
 	));
+	if(!$mail->Send()){
+		echo $mail->ErrorInfo;
+	}else{
+		return 'Sent';
+	}
 }
 ?>
