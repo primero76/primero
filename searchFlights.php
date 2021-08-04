@@ -28,7 +28,7 @@
     $_SESSION['ticketPrice'] = $price;
     $query1 = "SELECT * FROM details WHERE departureplace = '$from' and returnplace='$to' and departuredate='$date'";
     
-    $res = mysqli_query($con, $query1);
+    $res = mysqli_query($conn, $query1);
     $num = mysqli_num_rows($res);
     $firstName = $_SESSION['NAME'];
             
