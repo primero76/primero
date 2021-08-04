@@ -24,8 +24,7 @@ session_start();
     $headers = "From: airways.primero@gmail.com";
 	
 	include('smtp/PHPMailerAutoload.php');
-$html='Msg';
-smtp_mailer($_POST['emailinp'],$subject,$html);
+smtp_mailer($_POST['emailinp'],$subject,$body);
 function smtp_mailer($to,$subject, $body){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
