@@ -22,9 +22,9 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->Port = 587; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "airlines.primero@gmail.com";
+	$mail->Username = "airways.primero@gmail.com";
 	$mail->Password = "primero12345";
-	$mail->SetFrom("airlines.primero@gmail.com");
+	$mail->SetFrom("airways.primero@gmail.com");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
