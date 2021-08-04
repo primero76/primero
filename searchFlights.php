@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-        //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
@@ -29,7 +28,7 @@
     $_SESSION['ticketPrice'] = $price;
     $query1 = "SELECT * FROM details WHERE departureplace = '$from' and returnplace='$to' and departuredate='$date'";
     
-    $res = mysqli_query($conn, $query1);
+    $res = mysqli_query($con, $query1);
     $num = mysqli_num_rows($res);
     $firstName = $_SESSION['NAME'];
             
@@ -43,7 +42,6 @@
     <title>BOOK</title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
     <link rel="stylesheet" href="masterkey.css">
-    <link rel="stylesheet" href="masterbooking.css">
     <link rel="stylesheet" href="searchFlights.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -53,7 +51,7 @@
         <div class="row"> 
             <nav>
                 <ul>
-                    <li><i class="fa fa-home"></i><a href="index.php"> About Us</a></li>
+                    <li><i class="fa fa-home"></i><a href="about.html"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a href="#"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
@@ -181,9 +179,20 @@
            </div>
        </div>
 </form>
-<footer>
+<footer class="foot">
     <div>
-        <label> </label>
+        <br>
+        <div class="footer-content">
+            <a href="homepage.php">About Us</a>&emsp14; | &emsp14;
+            <a href="faq.html">FAQs</a>&emsp14; | &emsp14;
+            <a href="contact.php">Contact Us</a>
+        </div>
+        <br>
+        <div class="icons-footer"><a href="#"><i class="fa fa-facebook"></i></a>&emsp14;<a href="#"><i class="fa fa-twitter"></i></a>&emsp14;<a href="#"><i class="fa fa-snapchat"></i></a>&emsp14;<a href="#"><i class="fa fa-instagram"></i></a></div>
+        <br>
+        <p class="developers">Developers: Talal Ahmed | Ashhad Zafar Khan | Moiz Masood </p>
+        <br>    
+        <p class="copyright">Primero Avionics © 2021</p>
     </div>
     
 </footer>
