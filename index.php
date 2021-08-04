@@ -34,5 +34,4 @@ include('smtp/PHPMailerAutoload.php');
 		'allow_self_signed'=>false
 	));
 }
-header('location:homepage.html');
 ?>
