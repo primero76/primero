@@ -24,7 +24,7 @@
     $generator";
     $headers = "From: airways.primero@gmail.com";
     include('smtp/PHPMailerAutoload.php');
-    $html='Msg';
+     echo smtp_mailer($to_email,$subject,$body);
     function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
@@ -46,13 +46,7 @@
 		'verify_peer_name'=>false,
 		'allow_self_signed'=>false
 	));
-	if(!$mail->Send()){
-		echo $mail->ErrorInfo;
-	}else{
-		return 'Sent';
-	}
 }
-    echo smtp_mailer($to_email,$subject,$body);
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;    
 ?>
