@@ -8,18 +8,24 @@ h1{
   margin-left: 450px;
 
 }
-
+.row-homepage{
+  margin-right: auto;
+  margin-left: auto;
+}
 .subheading{
-  margin-left: 450px;
-  font-size: 32px;
-  font-weight: 500;
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 20px;
+  font-size: 36px;
   line-height: 2;
+  color: lightseagreen;
   text-decoration: underline;
 }
 
 .intro {
-  margin-left: 450px;
+  margin-left: 200px;
+  margin-right: 200px;
   margin-bottom: 20px;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 2;
 }  
