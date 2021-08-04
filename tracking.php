@@ -50,7 +50,7 @@
         <button style="background-color: lightseagreen;"> </button>            
     </div>    
     <div id="cont2" class="content">
-    <form style="float:left" action="trackValid.php" method="post">
+    <form style="float:left" action="trackvalid.php" method="post">
             <h1 > Track Flights </h1>
             <table class="trackTable">
             <tr class="col1">                        
