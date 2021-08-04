@@ -155,11 +155,23 @@
            </div>
        </div>
 </form>
-<footer>
-    <div>
-        <label> </label>
-    </div>
     
+<footer class="foot">
+    <div>
+        <br>
+        <div class="footer-content">
+            <a href="#">About Us |</a>&emsp14;
+            <a href="#">Book Flights |</a>&emsp14;
+            <a href="#">Our Team |</a>&emsp14;
+            <a href="#">Contact Us </a>&emsp14;
+        </div>
+        <br>
+        <br>
+        <div class="icons-footer"><a href="#"><i class="fa fa-facebook"></i></a>&emsp14;<a href="#"><i class="fa fa-twitter"></i></a>&emsp14;<a href="#"><i class="fa fa-snapchat"></i></a>&emsp14;<a href="#"><i class="fa fa-instagram"></i></a></div>
+        <br>
+        <br>    
+        <p class="copyright">Oxour Airways © 2018</p>
+    </div>
 </footer>
 
 
