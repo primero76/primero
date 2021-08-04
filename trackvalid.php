@@ -1,18 +1,25 @@
 <?php
     session_start();
 
-    $con = mysqli_connect('localhost','root');
-    mysqli_select_db($con,'flight_booking');
+   $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb_server = $cleardb_url["host"];
+    $cleardb_username = $cleardb_url["user"];
+    $cleardb_password = $cleardb_url["pass"];
+    $cleardb_db = substr($cleardb_url["path"],1);
+    $active_group = 'default';
+    $query_builder = TRUE;
+    // Connect to DB
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
     $firstName = $_SESSION['NAME'];
 
     $trackingID = $_POST['track'];
     $sql1  = "select * from flightdata where TRACKING_ID =  '$trackingID' ";
-    $res1 = mysqli_query($con,$sql1);
+    $res1 = mysqli_query($conn,$sql1);
     $row1 = mysqli_fetch_assoc($res1);
 
     $sql2  = "select * from seats where ID = $trackingID";
-    $res2 = mysqli_query($con,$sql2);
+    $res2 = mysqli_query($conn,$sql2);
     $num1 = mysqli_num_rows($res2);
 ?> 
 
