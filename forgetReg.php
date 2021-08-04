@@ -22,8 +22,8 @@ session_start();
     $headers = "From: airways.primero@gmail.com";
 	
 	include('smtp/PHPMailerAutoload.php');
-smtp_mailer($to_email,'Password Reset',$bod);
-function smtp_mailer($to,$subject, $body){
+smtp_mailer($to_email,'Password Reset',$genera);
+function smtp_mailer($to,$subject, $generator){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
 	$mail->IsSMTP(); 
