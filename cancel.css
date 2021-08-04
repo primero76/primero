@@ -1,0 +1,72 @@
+#cont3{
+    visibility: visible;
+}
+#btn3{
+    color: lightseagreen;
+    background-color: white;
+}
+
+#btn1{
+    color: white;
+    background-color: lightseagreen;    
+}
+
+#btn2{
+    color: white;
+    background-color: lightseagreen;
+}
+.content
+{
+    width: 100%;
+}
+label,input
+{
+    font-size: 22px;
+}
+
+table{
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 50px 20px;    
+}
+
+.tablecol1
+{
+    margin: 0;
+    width: 300px;
+    border: solid 1px rgba(185, 170, 182, 0.515);
+    padding: 10px;
+}
+.tablecol2
+{
+    margin: 0 50px;
+    width: 810px;
+    border: solid 1px rgba(185, 170, 182, 0.515);
+    padding: 10px;
+}
+input
+{
+    visibility: visible;
+}
+
+.box
+{    
+    float: right;
+    width: 14%;
+    margin-top: 60px;
+    margin-right: 60px;
+    background-color: lightseagreen;
+    align-items: center;
+    cursor: pointer;
+}
+#subbtn
+{   
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    padding: 12px 65px;
+    font-size: 20px;
+    font-weight: bold; 
+}

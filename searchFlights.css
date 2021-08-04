@@ -1,0 +1,135 @@
+.flightForm
+{
+    width: 80%;
+    height: 600px;
+    margin: 395px auto;
+    position: relative ;
+    overflow: scroll;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 20px 30px #13090933;
+}
+.selectrow button
+{
+    width: 100%;
+    background: transparent; 
+    border: solid 1px lightseagreen;
+    background-color: lightseagreen;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+i:hover{
+    color: rgb(0, 0, 0);
+}
+.content{
+    position: absolute;
+    visibility: hidden;
+    margin: 5% auto;
+}
+
+#cont1{
+    visibility: visible;
+}
+#btn1{
+    color: lightseagreen;
+    border-bottom: solid 1px white;
+    background-color: white;
+}
+
+#btn2{
+    color: white;
+    background-color: lightseagreen;    
+}
+
+#btn3{
+    color: white;
+    background-color: lightseagreen;
+}
+
+.tabHeading
+{
+    font-size: 20px;
+}
+.tabHeading th{    
+    font-weight: bold;
+    width: 260px;
+    border: solid 1px rgba(185, 170, 182, 0.515);
+    padding: 5px;
+}
+th{    
+    font-weight: normal;
+    width: 260px;
+    border: solid 1px rgba(185, 170, 182, 0.515);
+    padding: 5px;
+}
+th:hover
+{
+    border-color:  rgba(32, 178, 170, 0.515);
+}
+
+h1{
+    width: fit-content;
+    padding: 0px 20px;
+    margin-left: 40px;
+}
+.lblclass{
+    font-size: 18px;
+    margin: 0;
+    margin-top: 0;    
+}
+
+.NA
+{
+    font-size: 40px;
+    text-align: center;
+}
+a
+{
+    color: inherit;
+}
+
+/*For Responsive*/
+
+@media only screen and (max-width: 600px) {
+    
+    .flightForm{
+        width: 90%;
+        height: 700px;
+    }
+    label{
+        font-size: 14px;
+        margin: 0;  
+    }
+    .btn-box
+    {
+        height: 7% !important;
+    }
+    #btn1,#btn2{
+        font-size: 12px;
+        width: 50% !important;
+        height: 100% !important;
+    }
+    h1{
+        padding: 0 20px;
+        font-size: 16px;
+    }
+    table{
+        margin: 0 20px;
+        width: 100%;
+        overflow: auto;
+        position: relative;
+    }
+    td{
+        display: block;
+        width: 90% !important;
+    }
+    .box{
+        width: 90%;
+        margin: 0 auto !important;
+        float: none !important;
+    }
+    input {
+        font-size: 12px !important;
+    }
+  }

@@ -1,0 +1,201 @@
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: whitesmoke !important;
+}
+.row1{
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  margin-right: 10%;
+  padding-bottom: 2.5%;
+  margin-top: 5px;
+}
+.contactuspage{
+    width: 80%;
+    height: 1400px;
+    margin: 395px auto;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    position: relative ;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 20px 30px #13090933;
+    background-color: lightseagreen;
+}
+
+fieldset{
+    margin-top: 40px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    padding-top: 40px;
+    background-color: whitesmoke;
+}
+
+.card-img-top{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 10px;
+}
+
+label{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px;
+    font-weight: bold;
+}
+
+/* Style inputs with type="text", select elements and textareas */
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 2px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+  input[type=tel] {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 2px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+  
+  /* Style the submit button with a specific background color etc */
+  input[type=submit] {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: lightseagreen;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    transition: 500ms;
+  }
+  
+  /* When moving the mouse over the submit button, add a darker green color */
+  input[type=submit]:hover {
+    background-color: white;
+    color: lightseagreen;
+  }
+  
+  /* Add a background color and some padding around the form */
+  .container {
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+
+  .footer-dark {
+    margin-top: -5px;
+    padding:30px 0;
+    color:#f0f9ff;
+    background-color:lightseagreen;
+  }
+  
+  .footer-dark h3 {
+    margin: top 2px;;
+    margin-bottom:12px;
+    font-weight:bold;
+    font-size:16px;
+  }
+  
+  .footer-dark ul {
+    padding:0;
+    list-style:none;
+    line-height:1.6;
+    font-size:14px;
+    margin-bottom:0;
+  }
+  
+  .footer-dark ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.6;
+  }
+  
+  .footer-dark ul a:hover {
+    opacity:0.8;
+  }
+  
+  @media (max-width:767px) {
+    .footer-dark .item:not(.social) {
+      text-align:center;
+      padding-bottom:20px;
+    }
+  }
+  
+  .footer-dark .item.text {
+    margin-bottom:36px;
+  }
+  
+  @media (max-width:767px) {
+    .footer-dark .item.text {
+      margin-bottom:0;
+    }
+  }
+  
+  .footer-dark .item.text p {
+    opacity:0.6;
+    margin-bottom:0;
+  }
+  
+  .footer-dark .item.social {
+    text-align:center;
+  }
+  
+  @media (max-width:991px) {
+    .footer-dark .item.social {
+      text-align:center;
+      margin-top:20px;
+    }
+  }
+  
+  .footer-dark .item.social > a {
+    font-size:20px;
+    width:36px;
+    height:36px;
+    line-height:36px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.4);
+    margin:0 8px;
+    color:#fff;
+    opacity:0.75;
+  }
+  
+  .footer-dark .item.social > a:hover {
+    opacity:0.9;
+  }
+  
+  .footer-dark .copyright {
+    text-align:center;
+    padding-top:24px;
+    opacity:0.3;
+    font-size:13px;
+    margin-bottom:0;
+  }
+
+  .footer-wave .wave-decoration svg path {
+    fill: lightseagreen;
+}
+
+  .footer-wave{
+    width: 100%;
+  }

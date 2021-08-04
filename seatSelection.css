@@ -1,0 +1,233 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins','sans-serif';
+    text-decoration: none;
+    list-style: none;
+}
+body{
+    background-image: url("/pst.png");
+    background-repeat: no-repeat;
+}
+.flightForm 
+{
+    width: 80% ;
+    height: 800px ;
+    margin: 205px auto ;
+    margin-top: 20px ;
+    position: relative ;
+    overflow-y: auto ;
+    border: solid 1px lightseagreen ;
+    border-radius: 10px 10px 0 0 ;
+    box-shadow: 0 20px 30px #13090933 ;
+}
+
+.btn-box{
+    height: 8% !important;
+}
+.box
+{
+    margin-bottom: 8% !important;
+}
+i:hover{
+    color: rgb(0, 0, 0);
+  }
+
+
+#cont1{
+    visibility: visible;
+}
+#btn1{
+    color: lightseagreen;
+    background-color: white;
+}
+
+#btn2{
+    color: white;
+    background-color: lightseagreen;
+    
+}
+
+label{
+    font-size: 18px;
+    margin: 10%;
+    margin-top: 20px;
+    
+}
+
+@media screen and (max-width: 600px) {
+
+    h1{
+        font-size: 18px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+    input  {
+        font-size: 14px;
+    }
+    .form{
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    td{
+        display: block;
+    }
+    .box
+    {
+        margin-top: 8% !important;
+    }
+}
+
+#btn4{
+    float: right;
+}
+
+
+
+/*
+<input placeholder=Children type="hidden" id="childInp" >
+
+Seat Select Css*/
+
+
+
+.seatdiv{
+    width: 100%;
+    height: 200px;
+    color: black;
+    height: 50%;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+}
+
+.upper{
+    max-width: 210px;
+    margin: auto;
+    margin-top: 5px;
+    height: 400px;
+    text-align: center;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-radius: 60% 60% 0px 0px;
+    background-color: rgb(220, 250, 255);
+}
+
+.leftwing{
+    position: absolute;
+    left: 0px;
+    top: 550px;
+    z-index: -1;
+    border: 5px solid black;
+    background-color: rgb(220, 250, 255);
+    height: 180px;
+    width: 580px;
+    transform: skewY(-20deg);
+}
+
+@media only screen and (max-width: 1000px) {
+    .leftwing {
+        top: 500px;
+        width: 200px;
+    }
+}
+
+.rightwing{
+    position: absolute;
+    right: 0px;
+    top: 550px;
+    z-index: -1;
+    border: 5px solid black;
+    background-color: rgb(220, 250, 255);
+    height: 180px;
+    width: 580px;
+    transform: skewY(20deg);
+}
+
+@media only screen and (max-width: 1000px) {
+
+.form{
+    margin: 20px auto;
+    height: 500px;
+}
+
+    .rightwing{
+        top: 500px;
+        width: 200px;
+    }
+  }
+
+.middle{
+    max-width: 210px;
+    margin: auto;
+    height: 700px;
+    text-align: center;
+    border-top: 2px solid black;
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+    background-color: rgb(220, 250, 255);
+    margin-bottom: 10px;
+}
+
+.business{
+    height: 180px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.economy{
+    height: 400px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.right > label, .left > label{
+    cursor: pointer;
+    display: inline-block;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 2px;
+    width: 25%; 
+    font-size: 12px;
+    padding: 4px 0;
+    border-radius: 8px;
+    box-shadow: 0 0 0px 1px rgb(90, 230, 255);
+    background-color: rgb(200, 245, 253);
+    user-select: none;
+}
+
+.right{
+    float:right;
+    width: 48%;
+}
+
+.left{
+    float:left;
+    width: 48%;
+}
+
+input{
+    cursor: pointer;
+    display: none;
+}
+
+input:checked + label{
+    color:rgb(255, 255, 255);
+    background-color: rgb(85, 210, 60);
+    box-shadow: 0 0 0px 1px rgb(4, 87, 1);
+}
+
+input:disabled + label{
+    color:rgb(70, 0, 0);
+    background-color: rgb(255, 215, 215);
+    box-shadow: 0 0 0px 1px red;
+    cursor: not-allowed;
+}
