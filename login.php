@@ -18,7 +18,7 @@
         <div class="row">           
             <nav>
                 <ul>
-                    <li><i class="fa fa-home"></i><a href="index.html"> About Us </a></li>
+                    <li><i class="fa fa-home"></i><a href="index.php"> About Us </a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Please login first');"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a onclick="alert('Please login first');"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
