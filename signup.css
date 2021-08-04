@@ -141,7 +141,7 @@ label {
 	  font-size: 14px;
 	  margin: 0px;
 	  margin-left: 3% !important;
-	  margin-top: 2%
+	  margin-top: 2%;
 	}
 	.btn-box
 	{
@@ -175,10 +175,10 @@ label {
 		margin: 2% 0 !important;
 	}
 	.form-ctrl input{
-	padding: 0;
+		margin-left: 1px !important;
 	}
 	.form{
-	padding: 20px 1%;
+	padding: 20px 3%;
 	}
 	input{
 	  font-size: 14px !important;
