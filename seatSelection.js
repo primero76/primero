@@ -19,10 +19,6 @@ function limit_checkbox(name,obj,max)
 To select this option unselect one of the others.');
       obj.checked = false;
       }
-      if (count < max)
-      {
-         alert('Please select all seats');
-      }
    }
 
 function openBook(){
