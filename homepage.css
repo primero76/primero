@@ -4,14 +4,21 @@ body {
   font-weight: 300;
 }
 
+h1{
+  margin-left: 450px;
+
+}
+
 .subheading{
+  margin-left: 450px;
   font-size: 32px;
   font-weight: 500;
   line-height: 2;
   text-decoration: underline;
 }
 
-p {
+.intro {
+  margin-left: 450px;
   margin-bottom: 20px;
   font-size: 17px;
   line-height: 2;
