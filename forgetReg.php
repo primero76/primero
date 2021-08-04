@@ -24,7 +24,7 @@
     $generator";
     $headers = "From: airways.primero@gmail.com";
     include('smtp/PHPMailerAutoload.php');
-     echo smtp_mailer($to_email,$subject,$body);
+     echo smtp_mailer('ashhadrider2@gmail.com','HEllo Jaani','Saala');
     function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
