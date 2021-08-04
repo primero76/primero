@@ -140,6 +140,9 @@ footer > div
   font-size: 12px;
   opacity: 0.8;
 }
+.developers{
+  text-align: center;
+}
 
 @media only screen and (max-width: 600px) {
   *{
@@ -167,5 +170,8 @@ footer > div
   nav ul li{
       margin-left: 5px;
       font-size: 14px;
+  }
+  .developers{
+    font-size: 10px;
   }
 }
