@@ -13,7 +13,7 @@ $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $c
 
 include('smtp/PHPMailerAutoload.php');
 $html='Msg';
-echo smtp_mailer('airlines.primero@gmail.com','subject',$html);
+echo smtp_mailer('airways.primero@gmail.com','subject',$html);
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
@@ -24,9 +24,9 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->Port = 587; 
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
-	$mail->Username = "airlines.primero@gmail.com";
+	$mail->Username = "airways.primero@gmail.com";
 	$mail->Password = "primero12345";
-	$mail->SetFrom("airlines.primero@gmail.com");
+	$mail->SetFrom("airways.primero@gmail.com");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;
 	$mail->AddAddress($to);
