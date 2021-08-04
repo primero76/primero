@@ -29,7 +29,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Card Information</title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">    
-    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="WebProjStyle.css">
     <link rel="stylesheet" href="masterkey.css"/>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
