@@ -26,6 +26,18 @@ input
     border-radius: 10px 10px 0 0;
     box-shadow: 0 20px 30px #13090933;
 }
+
+.success
+{
+    width: 80%;
+    height: 500px;
+    margin: 395px auto;
+    margin-top: 20px;
+    position: relative ;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 20px 30px #13090933;
+}
 label:hover
 {
     cursor: pointer;
@@ -58,7 +70,6 @@ i:hover{
     font-size: 20px;
     font-weight: bold;
 }
-
 .content{
     display: flex;
     justify-content: center;
@@ -201,6 +212,10 @@ footer > div
     h1{
         padding: 0 20px;
         font-size: 16px;
+    }
+    h3{
+        padding: 0 20px;
+        font-size: 12px;
     }
     table{
         margin: 0 20px;
