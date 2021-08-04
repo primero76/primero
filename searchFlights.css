@@ -1,8 +1,12 @@
+a
+{
+    color: inherit;
+}
 .flightForm
 {
     width: 80%;
     height: 600px;
-    margin: 395px auto;
+    margin: 20px auto;
     position: relative ;
     overflow: scroll;
     border-radius: 10px 10px 0 0;
@@ -18,14 +22,41 @@
     cursor: pointer;
     font-size: 20px;
 }
-
+table{
+    margin: -20px 50px;
+    border-collapse: separate;
+    border-spacing: 0 20px;    
+}
 i:hover{
     color: rgb(0, 0, 0);
 }
+
+.btn-box{
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    background-color: lightseagreen;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12%;
+}
+.btn-box button{
+    background: transparent; 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 20%;
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .content{
     position: absolute;
     visibility: hidden;
-    margin: 5% auto;
+    margin: 5% auto; 
+    width: 100%; 
 }
 
 #cont1{
