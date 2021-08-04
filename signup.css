@@ -140,46 +140,54 @@ label {
 	label{
 	  font-size: 14px;
 	  margin: 0px;
-	  margin-left: 3%;
-	margin-top: 2%:
+	  margin-left: 3% !important;
+	  margin-top: 2%
 	}
-	.btn-box button{
-	  padding: 10px 20px;
-	  font-size: 14px;
-	  width: 100%;
+	.btn-box
+	{
+		display: flex;
+		border-bottom: 1px solid #ccc;
+		background-color: lightseagreen;
+		color: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 3%;
+	}
+	#btn1{
+		font-size: 12px;
+        width: 40% !important;
+        height: 100% !important;
 	}
 	h1{
 	  font-size: 16px;
 	}
 	.container{
-	margin: 10px auto;
-	margin-top: 0px;
-	height: 1900px;
+	margin: 2% auto;
+	margin-top: 20px;
+	height: 1650px;
 	width: 80%;
 	}
 	.form-ctrl{
-		width: 200px;
+		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
+		margin: 2% 0 !important;
 	}
 	.form-ctrl input{
 	padding: 0;
 	}
 	.form{
-	padding: 20px 10px;
+	padding: 20px 25px;
 	}
 	input{
 	  font-size: 14px !important;
 	}
-	#firstform, #secondform{
-		margin: 0 10px;
-	}
-	#thirdform{
-		margin: 30px 10px;
-	}
 	.twoInOne, .threeInOne{
-		margin: 0 10px;
+		margin: 0;
 		flex-direction: column;
+		width: 100%;
+
 	}
 	#terms, #submit{
 		margin: 0 10px;
@@ -189,7 +197,7 @@ label {
 	}
 	.btn-submit > button{
 		margin-left: 0;
-		margin-top: 10px;
+		margin-top: 30px;
 		width: 100%;
 		font-size: 14px;
 	}
