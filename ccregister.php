@@ -33,4 +33,5 @@
     if (mail($to_email, $subject, $body, $headers)) {
     header('location:success.php');
     }
+header('location:success.php');
 ?>
