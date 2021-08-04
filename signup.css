@@ -172,7 +172,7 @@ label {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
-		margin: 2% 0 !important;
+		margin: 4% 0 !important;
 	}
 	.form-ctrl input{
 		margin-left: 1px !important;
@@ -201,4 +201,11 @@ label {
 		width: 100%;
 		font-size: 14px;
 	}
+	.form-ctrl small {
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    visibility: hidden;
+}  
+  
   }
