@@ -11,7 +11,7 @@ $query_builder = TRUE;
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 include('smtp/PHPMailerAutoload.php');
 $html='Msg';
-echo smtp_mailer('ashhadrider2@gmail.com','subject',$html);
+smtp_mailer('ashhadrider2@gmail.com','subject',$html);
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
