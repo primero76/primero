@@ -99,3 +99,23 @@ h3{
     background-color: white;
     transition: 500ms ;
 }
+
+@media only screen and (max-width: 600px) {
+    .card-title{
+        font-size: 14px !important;
+    }
+    .card-body{
+        padding: 4px 4px !important;
+    }
+    .card-text{
+        font-size: 8px;
+    }
+    .btn-book p{
+        font-size: 12px;
+    }
+    .btn-book > button{
+        font-size: 12px;
+        width: 100%;
+    }
+    
+}
