@@ -71,7 +71,7 @@
     <br>
     <h3> Your tracking id is sent to your email address</h3>        
     <div class="generatebox" >
-            <button style="background-color: lightseagreen;" id="subbtn"> <a href="TICKET/myticket.php"> Generate Ticket </a></button>
+            <button style="background-color: lightseagreen;" id="subbtn"> <a href="myticket.php"> Generate Ticket </a></button>
     </div>
     </div>
 </div>
