@@ -1,4 +1,5 @@
 <?php
+    include('smtp/PHPMailerAutoload.php');
     session_start();    
     //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
@@ -22,16 +23,39 @@
     $query = "update set CARD_NUMBER = '$cardNumber', EXPIRY_DATE = '$expiryDate', CVV = '$CVV' WHERE EMAIL='$emailAdd'";
     mysqli_query($conn,$query);
 
-    $subject = "Tracking Id";
+    $subj = "Tracking Id";
     $body = "  Hi, Thank you for booking from Primero Avionics. For further details contact us.
     You can easily track your flight through this tracking id
         
     
     $ID";
-    $headers = "From: airways.primero@gmail.com";
-    $to_email = $emailAdd;
-    if (mail($to_email, $subject, $body, $headers)) {
-    header('location:success.php');
-    }
+function smtp_mailer($to,$subject, $msg){
+	$mail = new PHPMailer(); 
+	$mail->SMTPDebug  = 3;
+	$mail->IsSMTP(); 
+	$mail->SMTPAuth = true; 
+	$mail->SMTPSecure = 'tls'; 
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = 587; 
+	$mail->IsHTML(true);
+	$mail->CharSet = 'UTF-8';
+	$mail->Username = "airways.primero@gmail.com";
+	$mail->Password = "primero12345";
+	$mail->SetFrom("airways.primero@gmail.com");
+	$mail->Subject = $subject;
+	$mail->Body =$msg;
+	$mail->AddAddress($to);
+	$mail->SMTPOptions=array('ssl'=>array(
+		'verify_peer'=>false,
+		'verify_peer_name'=>false,
+		'allow_self_signed'=>false
+	));
+	if(!$mail->Send()){
+		echo $mail->ErrorInfo;
+	}else{
+		return 'Sent';
+	}
+}
+smtp_mailer($_SESSION['mail'],$subj,$body);
 header('location:success.php');
 ?>
