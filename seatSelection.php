@@ -79,6 +79,11 @@
             <button style="background-color: lightseagreen;"> </button>
             
         </div>
+        
+        <div class="seat-info">
+            <img class="seat-img" src="seats.png">
+        </div>
+        
         <div id="cont1" class="content">
             <div class="seatdiv">
                 <div class="upper"></div>
@@ -86,7 +91,7 @@
                 <div class="rightwing"></div>
                 <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">                    
                 <div class="middle">
-                    <div class="business">                                
+                    <div class="business"> Business Class                                
                             <div class="left" >
                                 <input id="seat-1" type="checkbox" value="seat-1" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
                                 <label for="seat-1"> B01 </label>
@@ -177,7 +182,7 @@
                             </div>
                     </div>
 
-                    <div class="economy">
+                    <div class="economy"> <br>Economy Class
                             <div class="left">
                                 <input id="seat-37" type="checkbox" value="seat-37" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
                                 <label for="seat-37" >E01</label>
@@ -228,6 +233,20 @@
                                 <input id="seat-75" type="checkbox" value="seat-75" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
                                 <label for="seat-75" >E39</label>
                                 
+                                <input id="seat-79" type="checkbox" value="seat-79" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-79" >E43</label>
+                                <input id="seat-80" type="checkbox" value="seat-80" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-80" >E44</label>
+                                <input id="seat-81" type="checkbox" value="seat-81" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-81" >E45</label>
+                                
+                                <input id="seat-85" type="checkbox" value="seat-85" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-85" >E49</label>
+                                <input id="seat-86" type="checkbox" value="seat-86" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-86" >E50</label>
+                                <input id="seat-87" type="checkbox" value="seat-87" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-87" >E51</label>
+                                
                             </div>
 
                             <div class="right">
@@ -272,6 +291,27 @@
                                 <label for="seat-71" >E35</label>
                                 <input id="seat-72" type="checkbox" value="seat-72" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
                                 <label for="seat-72" >E36</label>
+                                
+                                <input id="seat-76" type="checkbox" value="seat-76" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-76" >E40</label>
+                                <input id="seat-77" type="checkbox" value="seat-77" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-77" >E41</label>
+                                <input id="seat-78" type="checkbox" value="seat-78" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-78" >E42</label>
+                                
+                                <input id="seat-82" type="checkbox" value="seat-82" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-82" >E46</label>
+                                <input id="seat-83" type="checkbox" value="seat-83" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-83" >E47</label>
+                                <input id="seat-84" type="checkbox" value="seat-84" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-84" >E48</label>
+                                
+                                <input id="seat-88" type="checkbox" value="seat-88" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-88" >E52</label>
+                                <input id="seat-89" type="checkbox" value="seat-89" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-89" >E53</label>
+                                <input id="seat-90" type="checkbox" value="seat-90" name="seat[]" onclick="limit_checkbox('seat[]',this,<?php echo $numofpassengers?>)" />
+                                <label for="seat-90" >E54</label>
                             </div>                        
                     </div>
                     
