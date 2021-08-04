@@ -1,8 +1,16 @@
 <?php
     session_start();
 
-    $con = mysqli_connect('localhost','root');
-    mysqli_select_db($con,'flight_booking');
+        //Get Heroku ClearDB connection information
+    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb_server = $cleardb_url["host"];
+    $cleardb_username = $cleardb_url["user"];
+    $cleardb_password = $cleardb_url["pass"];
+    $cleardb_db = substr($cleardb_url["path"],1);
+    $active_group = 'default';
+    $query_builder = TRUE;
+    // Connect to DB
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
     $from = $_SESSION['from'];
     $to = $_SESSION['to'];
@@ -21,7 +29,7 @@
     $_SESSION['ticketPrice'] = $price;
     $query1 = "SELECT * FROM details WHERE departureplace = '$from' and returnplace='$to' and departuredate='$date'";
     
-    $res = mysqli_query($con, $query1);
+    $res = mysqli_query($conn, $query1);
     $num = mysqli_num_rows($res);
     $firstName = $_SESSION['NAME'];
             
