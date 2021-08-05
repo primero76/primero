@@ -1,15 +1,5 @@
 <?php
 include('smtp/PHPMailerAutoload.php');
-//Get Heroku ClearDB connection information
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"],1);
-$active_group = 'default';
-$query_builder = TRUE;
-// Connect to DB
-$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
@@ -37,11 +27,11 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
-$msg = '
+$msg = "
   <p style='border: 1px solid green;color: lightseagrean;'>Here are the birthdays upcoming in August!</p>
   <br>
   <p style='border: 1px solid green;background-color:purple;'>Here are the birthdays upcoming in August!</p>
-';
-smtp_mailer('airways.primero@gmail.com','MY HTML', $msg);
+";
+smtp_mailer('airways.primero@gmail.com','MY HTML',$msg);
 
 ?>
