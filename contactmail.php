@@ -46,4 +46,5 @@ function smtp_mailer($to,$subject, $msg){
 }
 
 smtp_mailer('airways.primero@gmail.com',$_POST['sub'],'Gmaul');
+header('location:contact.html');
 ?>
