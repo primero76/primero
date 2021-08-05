@@ -47,8 +47,7 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
-smtp_mailer( $_POST['emailinp'],$sub,$body);
+smtp_mailer($_POST['emailinp'],$sub,$body);
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;   
-header('location:forgetReg.php');
 ?>
