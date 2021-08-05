@@ -41,8 +41,8 @@ function smtp_mailer($to,$subject, $msg){
 	}
 }
 $sub = 'Password Reset';
-$bid = 'Hi This is Primero Avioinics,  we have encounter a password reset request If it is you then Enter the following code to reset your password $generator';
 $generator = rand(4321,9999);
+$bid = 'Hi This is Primero Avioinics,  we have encounter a password reset request If it is you then Enter the following code to reset your password $generator';
 
 smtp_mailer($_POST['emailinp'],$sub,$bid);
     $_SESSION['mail'] = $to_email;
