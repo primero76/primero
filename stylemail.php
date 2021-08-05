@@ -35,7 +35,7 @@ $msg = "
         <br>
         If it is you then enter the following code.
     </h1>
-    <p style="border: rgb(0, 0, 0) solid 2px;margin-left:20% ;font-weight: bold;padding: 2%;background-color: rgb(32, 178, 170); width: 3%; font-size: 30px; color: rgb(255, 255, 255);">
+    <p style="border:#000000 solid 2px;margin-left:20% ;font-weight: bold;padding: 2%;background-color: #20b2aa; width: 3%; font-size: 30px; color: #FFFFFF;">
         5738
     </p>
     <a href="http://primero-airways.herokuapp.com/myticket.php"></a>
