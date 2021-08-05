@@ -12,8 +12,6 @@ session_start();
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    $generator = rand(4321,9999);
-
     $to_email = $_POST['emailinp'];
 
     $sub = "Password Reset";
@@ -46,7 +44,10 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
-smtp_mailer($_POST['emailinp'],'Hellow',"HUG you");
+$generator = rand(4321,9999);
+
+smtp_mailer($_POST['emailinp'],$sub,"Hi, This is Primero Avioinics, we have encounter a password reset request.If it is you then Enter the following code to reset your password <> $generator <>");
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;   
+header('location:forgetReg.php');
 ?>
