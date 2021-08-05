@@ -1,5 +1,6 @@
 <?php
 include('smtp/PHPMailerAutoload.php');
+session_start();
     $F_NAME = $_POST['firstname'];
     $L_NAME = $_POST['lastname'];
     $NAME = $F_NAME." ".$L_NAME;
