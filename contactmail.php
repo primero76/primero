@@ -17,7 +17,7 @@ include('smtp/PHPMailerAutoload.php');
     $body.="Email: ".$mail. "\r\n";
     $body.="Message: ".$DESC. "\r\n"
   
-echo smtp_mailer($mail,$SUB,$body);
+echo smtp_mailer($to_email,$SUB,$body);
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
