@@ -83,6 +83,7 @@
                                 <option > Islamabad </option>
                                 <option > Quetta</option>
                                 <option > Multan</option>
+                                <option > Skurdo </option>
                             </datalist> 
                     </td>
                     <td class="tablecol" onclick="openDivTo()" >
@@ -94,6 +95,7 @@
                                 <option > Islamabad </option>
                                 <option > Quetta</option>
                                 <option > Multan</option>
+                                <option > Skurdo </option>
                             </datalist>
                     </td>  
                     
