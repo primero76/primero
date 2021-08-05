@@ -375,7 +375,7 @@
     if ($classOfSeat == 'Business')
     {
     ?>   
-        for (let i = 37; i < 76; i++) 
+        for (let i = 37; i < 90; i++) 
         {
             document.getElementById("seat-"+[i]).disabled = true;
         }
