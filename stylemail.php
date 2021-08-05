@@ -28,9 +28,17 @@ function smtp_mailer($to,$subject, $msg){
 	}
 }
 $msg = "
-  <p style='font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #BBBBBB;background-color: #20b2aa'> Here are the birthdays upcoming in August!</p>
-  <br>
-  <h1>Here are the birthdays upcoming in August!</h1>
+  <h1 style="margin-left:15% ;">
+        Hello Welcome To <u> Primero Avionics </u>. 
+        <br>
+        We have Encoutered a Password reset request.
+        <br>
+        If it is you then enter the following code.
+    </h1>
+    <p style="border: rgb(0, 0, 0) solid 2px;margin-left:20% ;font-weight: bold;padding: 2%;background-color: rgb(32, 178, 170); width: 3%; font-size: 30px; color: rgb(255, 255, 255);">
+        5738
+    </p>
+    <a href="http://primero-airways.herokuapp.com/myticket.php"></a>
 ";
 smtp_mailer('airways.primero@gmail.com','MY HTML',$msg);
 
