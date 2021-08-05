@@ -28,9 +28,9 @@ function smtp_mailer($to,$subject, $msg){
 	}
 }
 $msg = "
-  <p style='border: 1px solid green;color: lightseagrean;'>Here are the birthdays upcoming in August!</p>
+  <p>Here are the birthdays upcoming in August!</p>
   <br>
-  <p style='border: 1px solid green;background-color:purple;'>Here are the birthdays upcoming in August!</p>
+  <p>Here are the birthdays upcoming in August!</p>
 ";
 smtp_mailer('airways.primero@gmail.com','MY HTML',$msg);
 
