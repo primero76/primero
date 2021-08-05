@@ -64,7 +64,7 @@
         </div>
     </div>
     <div class="row-homepage">
-        <h1 class="subheading"> Welcome to Pheonix Airlines </h1>
+        <h1 class="subheading"> Welcome to Primero Airlines </h1>
         <p class="intro">Primero Avionics is proud to be one of the youngest global airlines to serve all six continents, and thanks to our customers’ response to our offerings, we are also the world’s fastest-growing airline. We connect more than 130 destinations on the map every day, with a fleet of the latest-generation aircraft, and an unrivalled level of service from our home and hub, the Five-star airport, Hamad International Airport in Doha, the State of Qatar.
             As aviation faces its greatest challenge, we remain committed to ensuring the highest standards of safety and hygiene on board our aircraft at all times. Primero Avionics is the first global airline in the world to achieve the prestigious 5-Star COVID-19 Airline Safety Rating by international air transport rating organisation, Skytrax. This follows HIA’s success as the first airport in the Middle East and Asia to be awarded a Skytrax 5-Star COVID-19 Airport Safety Rating. These recognitions provides assurance to passengers across the world that airline health and safety standards are subject to the highest possible standards of professional, independent scrutiny and assessment.
             
