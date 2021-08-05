@@ -40,9 +40,11 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
+$sub = 'Password Reset';
+$bid = 'Hi This is Primero Avioinics,  we have encounter a password reset request If it is you then Enter the following code to reset your password $generator';
 $generator = rand(4321,9999);
 
-smtp_mailer($_POST['emailinp'],'Password Reset','dnweodfnoeindeinw');
+smtp_mailer($_POST['emailinp'],$sub,$bid);
     $_SESSION['mail'] = $to_email;
     $_SESSION['code'] = $generator;   
 header('location:forgetReg.php');
