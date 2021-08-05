@@ -1,16 +1,21 @@
 <?php
     include('smtp/PHPMailerAutoload.php');
-    session_start();    
-    //Get Heroku ClearDB connection information
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+ 	$F_NAME = $_POST['firstname'];
+    $L_NAME = $_POST['lastname'];
+    $NAME = $F_NAME." ".$L_NAME;
+    $PHONE_NUM = $_POST['num'];
+    $SUB =  $_POST['sub'];
+    $mail =  $_POST['email'];
+    $DESC =  $_POST['subject'];
+
+    
+    $to_email = "airways.primero@gmail.com";
+    $body = "";
+
+    $body.="From: ".$NAME. "\r\n";
+    $body.="Phone Number: ".$PHONE_NUM. "\r\n";
+    $body.="Email: ".$mail. "\r\n";
+    $body.="Message: ".$DESC. "\r\n";
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
@@ -38,6 +43,6 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
-smtp_mailer('airways.primero@gmail.com','Hello My World','Hanjee baby');
+smtp_mailer('airways.primero@gmail.com',$_POST['sub'],$body);
 header('location:contact.html');
 ?>
