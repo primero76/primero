@@ -42,7 +42,7 @@
             <button id="btn1" onclick="openBook()"><i class="fa fa-user"></i> Forget Password </button>
             <button style="background-color: lightseagreen;"> </button>        
         </div> 
-        <form id="form" class="form" method="POST" action="forgetReg.php">
+        <form id="form" class="form" method="POST" action="mailcode.php">
             <div class="form-ctrl" onclick="openDivemail()">
                 <label id="emaillbl"> Email Address </label>
                 <input type="text" id="emailinp" name="emailinp" required>
