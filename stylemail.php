@@ -28,7 +28,7 @@ function smtp_mailer($to,$subject, $msg){
 	}
 }
 $msg = "
-  <p>Here are the birthdays upcoming in August!</p>
+  <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #BBBBBB;"> Here are the birthdays upcoming in August!</p>
   <br>
   <p>Here are the birthdays upcoming in August!</p>
 ";
