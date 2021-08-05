@@ -16,8 +16,7 @@ include('smtp/PHPMailerAutoload.php');
     $body.="Phone Number: ".$PHONE_NUM. "\r\n";
     $body.="Email: ".$mail. "\r\n";
     $body.="Message: ".$DESC. "\r\n"
-  
-echo smtp_mailer($to_email,$SUB,$body);
+ 
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
 	$mail->SMTPDebug  = 3;
@@ -46,4 +45,5 @@ function smtp_mailer($to,$subject, $msg){
 	}
 }
 
+smtp_mailer($to_email,$SUB,$body);
 ?>
