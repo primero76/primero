@@ -27,7 +27,6 @@ if ((time() - $_SESSION['last_activity']) > 500) // 30* 60 = 1800
 
     $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
     $firstName = strtoupper(" ".$row["F_NAME"]);
-   require('timeout.php');
     
 ?> 
 
