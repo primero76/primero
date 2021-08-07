@@ -10,6 +10,7 @@ session_start();
     $query_builder = TRUE;
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+    $emailAdd = $_SESSION['mail'];    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,26 +38,25 @@ session_start();
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a onclick="alert('Please login First')"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a onclick="alert('Already on contact Us page')"> Contact Us</a></li>
-                    <?php
-                     if ($_SESSION['mail'])
-    {
-    $emailAdd = $_SESSION['mail'];
-    $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
-    $res = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($res);
+<?php
+if ($_SESSION['mail'])
+{
+$sql  = "select * from signup where EMAIL =  '$emailAdd' ";
+$res = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($res);
 
-    $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
-    $firstName = strtoupper(" ".$row["F_NAME"]);
+$fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
+$firstName = strtoupper(" ".$row["F_NAME"]);
 
 ?>
                     <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
-                    <?php 
+<?php 
 }
 else
 {
 ?>
                     <li><i class="fa fa-user-circle-o"></i><a href="login.php"> SIGNUP | LOGIN </a> </li>
-                     <?php 
+<?php 
 }
 ?>
      
@@ -102,16 +102,13 @@ else
                      if ($_SESSION['mail'])
     {
     $emailAdd = $_SESSION['mail'];
-    $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
-    $res = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($res);
+    $sql2  = "select * from signup where EMAIL =  '$emailAdd' ";
+    $res2 = mysqli_query($conn,$sql2);
+    $row2 = mysqli_fetch_assoc($res2);
 
-    $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
-    $firstName = strtoupper(" ".$row["F_NAME"]);
-
-$f_name =  $row["F_NAME"];
-$l_name =  $row["L_NAME"];
-$number =  $row["MOBILENUM"];
+$f_name =  $row2["F_NAME"];
+$l_name =  $row2["L_NAME"];
+$number =  $row2["MOBILENUM"];
 
 ?>
             <form action="contactmail.php" method="post">
@@ -126,7 +123,7 @@ $number =  $row["MOBILENUM"];
                     <input type="text" id="lname" name="lastname" value="<?php echo $l_name ?>">
     
                     <label for="number">Phone Number</label>
-                    <input type="tel" id="num" name="num" value="<?php echo $number' ?>">
+                    <input type="tel" id="num" name="num" value="<?php echo $number?>">
     
                     <label for="subject">Subject</label>
                     <input type="text" id="sub" name="sub" placeholder="Enter Subject">
