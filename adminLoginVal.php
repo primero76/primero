@@ -24,7 +24,7 @@
         $_SESSION['adminMail'] = $emailAdd;             
     }
     else{
-        header('location:login.php');
+        header('location:adminLogin.php');
         alert("Invalid email or Password");  
     }
 ?>  
