@@ -1,5 +1,7 @@
 <?php
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+    session_start();
+    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
     $cleardb_password = $cleardb_url["pass"];
@@ -9,15 +11,6 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-if ((time() - $_SESSION['last_activity']) > 300) // 30* 60 = 1800
-{  
-   header("location: logout.php");  
-    } else {
-     session_start();
-   $_SESSION['last_activity'] = time();
-
-    //Get Heroku ClearDB connection information
-    
     if ($_SESSION['mail'])
     {
     $emailAdd = $_SESSION['mail'];
@@ -242,8 +235,5 @@ if ((time() - $_SESSION['last_activity']) > 300) // 30* 60 = 1800
     else
     {
         header('location:homepage.html');
-    }
-?>
-<?php
     }
 ?>
