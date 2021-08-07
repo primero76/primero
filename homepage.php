@@ -10,7 +10,7 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-if ((time() - $_SESSION['last_activity']) > 500) // 30* 60 = 1800
+if ((time() - $_SESSION['last_activity']) > 300) // 30* 60 = 1800
 {  
    header("location: logout.php");  
     } else {
