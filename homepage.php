@@ -1,6 +1,5 @@
 <?php
     session_start();
-    require('timeout.php');
     //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
@@ -22,6 +21,8 @@
 
     $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
     $firstName = strtoupper(" ".$row["F_NAME"]);
+   require('timeout.php');
+    
 ?> 
 
 <!DOCTYPE html>
