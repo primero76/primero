@@ -38,5 +38,9 @@ function smtp_mailer($to,$subject, $msg){
 		return 'Sent';
 	}
 }
+if ((time() - $_SESSION['last_activity']) > 180) // 30* 60 = 1800
+{  
+   header("Location:logout.php");  
+}  
 header('location:homepage.html');
 ?>
