@@ -137,7 +137,7 @@ else
         <div class="icons-footer"><a href="#"><i class="fa fa-facebook"></i></a>&emsp14;<a href="#"><i class="fa fa-twitter"></i></a>&emsp14;<a href="#"><i class="fa fa-snapchat"></i></a>&emsp14;<a href="#"><i class="fa fa-instagram"></i></a></div>
         <br>
         <br>    
-        <p class="copyright">Pheonix Airways © 2021</p>
+        <p class="copyright"> Primero Avionics © 2021</p>
     </div>
     
 </footer>
