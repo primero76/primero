@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require('timeout.php');
     //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
@@ -11,7 +12,7 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-
+    
     if ($_SESSION['mail'])
     {
     $emailAdd = $_SESSION['mail'];
