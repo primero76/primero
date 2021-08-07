@@ -11,8 +11,6 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    $firstName = $_SESSION['NAME'];
-
     $trackingID = $_POST['track'];
     $sql1  = "select * from flightdata where TRACKING_ID =  '$trackingID' ";
     $res1 = mysqli_query($conn,$sql1);
@@ -45,7 +43,27 @@
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a href="#"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
+                    <?php
+if ($_SESSION['mail'])
+{
+$sql  = "select * from signup where EMAIL =  '$emailAdd' ";
+$res = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($res);
+
+$fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
+$firstName = strtoupper(" ".$row["F_NAME"]);
+
+?>
                     <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
+<?php 
+}
+else
+{
+?>
+                    <li><i class="fa fa-user-circle-o"></i><a href="login.php"> SIGNUP | LOGIN </a> </li>
+<?php 
+}
+?>
                 </ul>
             </nav>
         </div>
