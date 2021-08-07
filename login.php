@@ -1,3 +1,7 @@
+<?php
+$_SESSION['status'] = true;
+$_SESSION['last_activity'] = time(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
