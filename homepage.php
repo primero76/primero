@@ -1,5 +1,4 @@
 <?php
-    session_start();
 $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
@@ -14,6 +13,7 @@ if ((time() - $_SESSION['last_activity']) > 300) // 30* 60 = 1800
 {  
    header("location: logout.php");  
     } else {
+     session_start();
    $_SESSION['last_activity'] = time();
 
     //Get Heroku ClearDB connection information
