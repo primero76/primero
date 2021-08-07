@@ -1,5 +1,12 @@
 <?php
     session_start();
+<?php
+if ((time() - $_SESSION['last_activity']) > 500) // 30* 60 = 1800
+{  
+   header("Location: logout.php");  
+    } else {
+   $_SESSION['last_activity'] = time();
+
     //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
@@ -237,5 +244,8 @@
     else
     {
         header('location:homepage.html');
+    }
+?>
+<?php
     }
 ?>
