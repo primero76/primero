@@ -1,3 +1,16 @@
+<?php
+session_start();
+    //Get Heroku ClearDB connection information
+    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb_server = $cleardb_url["host"];
+    $cleardb_username = $cleardb_url["user"];
+    $cleardb_password = $cleardb_url["pass"];
+    $cleardb_db = substr($cleardb_url["path"],1);
+    $active_group = 'default';
+    $query_builder = TRUE;
+    // Connect to DB
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,6 +98,48 @@ else
         </div>
         <div class="contactusform">
             <h1><b>Email Us</b></h1>
+            <?php
+                     if ($_SESSION['mail'])
+    {
+    $emailAdd = $_SESSION['mail'];
+    $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
+    $res = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($res);
+
+    $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
+    $firstName = strtoupper(" ".$row["F_NAME"]);
+
+$f_name =  $row["F_NAME"];
+$l_name =  $row["L_NAME"];
+$number =  $row["MOBILENUM"];
+
+?>
+            <form action="contactmail.php" method="post">
+                <fieldset>
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" value="<?php echo $emailAdd ?>">
+    
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" value="<?php echo $f_name ?>">
+    
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" value="<?php echo $l_name ?>">
+    
+                    <label for="number">Phone Number</label>
+                    <input type="tel" id="num" name="num" value="<?php echo $number' ?>">
+    
+                    <label for="subject">Subject</label>
+                    <input type="text" id="sub" name="sub" placeholder="Enter Subject">
+                    <textarea id="subject" name="subject" placeholder="A description of your query" style="height: 150px;"></textarea>
+    
+                    <input type="submit" value="Submit">
+                </fieldset>
+            </form>
+            <?php
+}
+else
+{
+?>
             <form action="contactmail.php" method="post">
                 <fieldset>
                     <label for="email">Email</label>
@@ -108,6 +163,9 @@ else
                 
                 </fieldset>
             </form> 
+            <?php
+}
+?>
         </div>
     </div>
 
