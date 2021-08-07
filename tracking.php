@@ -10,17 +10,6 @@
     $query_builder = TRUE;
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
-
-    if ($_SESSION['mail'])
-    {
-    $emailAdd = $_SESSION['mail'];
-    $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
-    $res = mysqli_query($con,$sql);
-    $row = mysqli_fetch_assoc($res);
-
-    $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
-    $firstName = strtoupper(" ".$row["F_NAME"]);
 ?> 
 
 <!DOCTYPE html>
@@ -143,10 +132,3 @@ else
 </body>
 
 </html>
-<?php
-    }
-    else
-    {
-        header('location:homepage.html');
-    }
-?>
