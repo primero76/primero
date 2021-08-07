@@ -40,8 +40,8 @@
             <nav>
                 <ul>
                     <li><i class="fa fa-home"></i><a href="index.php"> About Us</a></li>
-                    <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
-                    <li><i class="fa fa-tasks"></i><a href="#"> Manage</a></li>
+                    <li><i class="fa fa-newspaper-o"></i><a href="booking.php"> Book </a></li>
+                    <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
                     <?php
 if ($_SESSION['mail'])
@@ -80,8 +80,8 @@ else
 
 <div class="flightForm"> 
     <div class="btn-box">
-        <button id="btn1" onclick="openBook();"><i class="fa fa-plane"></i>  Book </button>
-        <button id="btn2" onclick="openFlightDetails();"><i class="fa fa-id-card"></i> Flight Status </button>
+        <button id="btn1" onclick="openBook();"><i class="fa fa-plane"></i> <a href="booking.php"> Book </a> </button>
+        <button id="btn2" onclick="openFlightDetails();"><i class="fa fa-id-card"></i> <a href="tracking.php"> Flight Status </a> </button>
         <button style="background-color: lightseagreen;"> </button>
         <button style="background-color: lightseagreen;"> </button>            
     </div>    
@@ -176,7 +176,7 @@ else
         <div class="icons-footer"><a href="#"><i class="fa fa-facebook"></i></a>&emsp14;<a href="#"><i class="fa fa-twitter"></i></a>&emsp14;<a href="#"><i class="fa fa-snapchat"></i></a>&emsp14;<a href="#"><i class="fa fa-instagram"></i></a></div>
         <br>
         <br>    
-        <p class="copyright">Pheonix Airways © 2021</p>
+        <p class="copyright"> Primero Avionics © 2021</p>
     </div>
     
 </footer>
