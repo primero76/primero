@@ -1,7 +1,6 @@
 <?php
-    session_start();
-   
+    session_start();  
+    unset($_SESSION['mail']);
 
-    header("location:homepage.html");
-    session_destroy();
+    header("location:login.php");
 ?> 
