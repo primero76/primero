@@ -179,7 +179,7 @@
         <div class="icons-footer"><a href="#"><i class="fa fa-facebook"></i></a>&emsp14;<a href="#"><i class="fa fa-twitter"></i></a>&emsp14;<a href="#"><i class="fa fa-snapchat"></i></a>&emsp14;<a href="#"><i class="fa fa-instagram"></i></a></div>
         <br>
         <br>    
-        <p class="copyright">Oxour Airways © 2018</p>
+        <p class="copyright"> Primero Avionics © 2018</p>
     </div>
 </footer>
 
