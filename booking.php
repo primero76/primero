@@ -15,7 +15,7 @@
     if ($_SESSION['mail'])
     {
     $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
-    $res = mysqli_query($con,$sql);
+    $res = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($res);
 
     $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
