@@ -125,7 +125,7 @@
                     <th id='time' name="time" value="$time"><?php echo $row["departuretime"];?></th>
                     <th> <?php echo $price;?> </th>
                      <th> <?php echo $row["flightname"];?> </th>                    
-                    <th class="selectrow" style="border:none"> <button type="submit"> <a href="validation.php?depTime=<?php echo $row["departuretime"];?>"> Select </a> </button> </th>
+                    <th class="selectrow" style="border:none"> <button type="submit"> <a href="validation.php?depID=<?php echo $row["DETAILS_ID"];?>"> Select </a> </button> </th>
                 </tr>
                 <?php
                 }
