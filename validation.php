@@ -12,7 +12,7 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    $ID = $_GET['ID'];
+    $ID = $_GET['deptID'];
     $num = rand(100000000000000,999999999999999);
     $trackingId = $num;
     
