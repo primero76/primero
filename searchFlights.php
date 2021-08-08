@@ -91,12 +91,12 @@
         <form action="" method="post">
         <table >
             <tr class="tabHeading">
-            <th> ID </th>
             <th> DEPARTURE </th>
             <th> DESTINATION </th>
             <th> DATE </th>
             <th> TIME </th>
             <th> PRICE </th>
+            <th> FLIGHT NAME </th>
             <th style="border:none">  </th>
             </tr >
             <?php
