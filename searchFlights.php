@@ -115,18 +115,16 @@
             }
             else
             {
-                $j = 0;
-                while($row = mysqli_fetch_assoc($res))
+               while($row = mysqli_fetch_assoc($res))
                 {
-                    $j+=1;
                 ?>
                 <tr>
-                    <th> <?php echo $j ?> </th>
                     <th><?php echo $row["departureplace"];?></th>
                     <th><?php echo $row["returnplace"];?></th>
                     <th><?php echo $row["departuredate"];?></th>
                     <th id='time' name="time" value="$time"><?php echo $row["departuretime"];?></th>
                     <th> <?php echo $price;?> </th>
+                     <th> <?php echo $row["flightname"];?> </th>                    
                     <th class="selectrow" style="border:none"> <button type="submit"> <a href="validation.php?depTime=<?php echo $row["departuretime"];?>"> Select </a> </button> </th>
                 </tr>
                 <?php
