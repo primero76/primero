@@ -1,31 +1,68 @@
 .container {
 	background-color: #fff;
 	border-radius: 5px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 5px rgba(32, 178, 171, 0.5);
 	overflow: hidden;
 	width: 70%;
-    height: 1425px;
+    height: 100%;
 	margin: 395px auto;
     margin-top: 20px;
 	max-width: 100%;
 }
+hr
+{
+	margin: 0 50px;
+}
+.hr
+{
+	margin: 50px 50px;
+}
+#btn1{
+    color: rgb(32, 178, 170);
+    background-color: white;
+	width: 25%;
+}
+#btn2{
+    background-color: rgb(32, 178, 170);
+	width: 75%;
+}
+.credit-box #btn1
+{
+	width: 35%;
+}
+.credit-box #btn2
+{
+	width: 65%;
+}
 .btn-box{
-  display: flex;
-  border-bottom: 1px solid #ccc;
+	display: flex;
+	border-bottom: 1px solid #ccc;
 }
-
-.btn-box > button{
-    background: transparent; 
-    border: none;
-    outline: none;
-    cursor: pointer;
-    width: 20%;
-    padding: 14px 16px;
-    font-size: 20px;
-    font-weight: bold;
-    
+.btn-box button{
+	background: transparent; 
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 20%;
+	padding: 14px 16px;
+	font-size: 20px;
+	font-weight: bold;    
 }
-.btn-submit > button{
+.credit-box{
+	display: flex;
+	border-bottom: 1px solid #ccc;
+}
+.credit-box button{
+	background: transparent; 
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 40%;
+	padding: 14px 16px;
+	font-size: 20px;
+	font-weight: bold;    
+}
+.btn-submit button{
     background-color: lightseagreen;
     border: none;
     outline: none;
@@ -35,113 +72,167 @@
     padding: 14px 16px;
     font-size: 20px;
     font-weight: bold;
-    margin-left: 630px;
-    
+	float: right;
+	margin: 0 1%;
+	margin-bottom: 10%;
 }
-.form {
-	padding: 30px 40px;	
-}
-.twoInOne,.threeInOne
+
+.one
 {
+	width:80%;
+	margin-left: 13%;
+	height: 100%;
+}
+.two
+{
+	width:100%;
 	display: flex;
-	margin: 0 120px;
-}
-.form-ctrl {
-	margin: 38px 32px 0 0;
-	padding-bottom: 20px;
-	position: relative;
-	border: 1px solid lightgrey;
-	width: 875px;
-	height: 60px;
-}
-#firstform, #secondform{
-	margin: 0 120px;
-}
-#thirdform{
-	margin: 30px 120px;
+	margin-bottom: 50px;
 }
 label {
 	display: inline-block;
 	font-size: 18px;
-    margin: 0 20px;
+    margin: 0 15px;
 }
-.form-ctrl input {
+h3 {
+	display: inline-block;
+    margin: 50px 50px 20px 50px;
+}
+.three
+{
+	width: 100%;
+	height: 60px;
+	border: 1px solid lightgrey;
+	margin: 0 1%;
+	position: relative;
+}
+.four
+{
+	width: 50%;
+	border: 1px solid lightgrey;
+	margin: 0 1%;
+	position: relative;
+}
+.five
+{
+	width: 33%;
+	border: 1px solid lightgrey;
+	margin: 0 1%;
+	position: relative;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"],
+input[type="date"]
+{
+	font-size: 20px;
+	margin: 0 20px;
 	border: none;
     outline: none;
 	display: block;
-	font-size: 20px;
-	padding: 0 20px;
-	width: 100%;
+	width: 90%;
 	visibility: hidden;
 }
-#btn1{
-    color: rgb(32, 178, 170);
-    background-color: white;
-}
-.twoInOne input {
-	border: none;
-    outline: none;
-	border-radius: 4px;
-	display: block;
-	font-size: 20px;
-	padding: 0 20px;
-	width: 420px;
-}
-
-.threeInOne input {
-	border: none;
-    outline: none;
-	border-radius: 4px;
-	display: block;
-	font-size: 20px;
-	padding: 0 20px;
-	width: 269px;
-}  
-.form-ctrl small {
+.two small {
     position: absolute;
     top: 60px;
     left: 20px;
-    visibility: hidden;
+	color: #e74c3c;
+	font-size: 14px;
 }  
   
-.form-ctrl i {
+.two i {
 	position: absolute;
 	bottom: 20px;
 	right: 10px;
-  	visibility: hidden;
+	visibility: hidden;
 }
 
-.form-ctrl.success {
+.terms small
+{
+	visibility: visible;
+}
+.three.success {
 	outline: 2px solid #2ecc71;
-  outline-offset: -3px;
+  	outline-offset: -3px;
 }
 
-.form-ctrl.error 
+.three.error 
 {
 	outline: 2px solid #e74c3c;
   	outline-offset: -3px;
 }
 
 
-.form-ctrl.success i.fa-check-circle, .form-ctrl.success small {
+.three.success i.fa-check-circle, .three.success small {
 	color: #2ecc71;
 	visibility: visible;
 }
 
-.form-ctrl.error i.fa-exclamation-circle ,.form-ctrl.error small {
+.three.error i.fa-exclamation-circle ,.three.error small {
 	color: #e74c3c;
 	visibility: visible;
 }
-#terms, #submit{
-	margin: 0 120px;
+.four.success {
+	outline: 2px solid #2ecc71;
+  	outline-offset: -3px;
+}
+
+.four.error 
+{
+	outline: 2px solid #e74c3c;
+  	outline-offset: -3px;
+}
+
+
+.four.success i.fa-check-circle, .four.success small {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.four.error i.fa-exclamation-circle ,.four.error small {
+	color: #e74c3c;
+	visibility: visible;
+}
+.five.success {
+	outline: 2px solid #2ecc71;
+  	outline-offset: -3px;
+}
+
+.five.error 
+{
+	outline: 2px solid #e74c3c;
+  	outline-offset: -3px;
+}
+
+
+.five.success i.fa-check-circle, .five.success small {
+	color: #2ecc71;
+	visibility: visible;
+}
+
+.five.error i.fa-exclamation-circle ,.five.error small {
+	color: #e74c3c;
+	visibility: visible;
+}
+.check 
+{
+	color: #e74c3c;
+	visibility: visible;
 }
 
 @media only screen and (max-width: 600px) {
-	label{
-	  font-size: 14px;
-	  margin: 0px;
-	  margin-left: 3% !important;
-	  margin-top: 2%;
+	.container
+	{
+		width: 98%;
+	}
+	hr
+	{
+		margin: 0 3%;
+	}
+	.hr
+	{
+		margin: 8% 3%;
 	}
 	.btn-box
 	{
@@ -153,58 +244,66 @@ label {
 		align-items: center;
 		justify-content: center;
 		height: 3%;
+		width: 100%;
 	}
-	#btn1{
-		font-size: 12px;
-        width: 40% !important;
-        height: 100% !important;
+
+	.credit-box
+	{
+		border-bottom: 1px solid #ccc;
+		background-color: lightseagreen;
+		color: white;
+		align-items: center;
+		justify-content: center;
+		height: 3%;
+		margin: 0;
+		width: 100;
 	}
-	h1{
-	  font-size: 16px;
+
+	h3 {
+		display: inline-block;
+		margin:5% 4% 0 4%;
+		font-size: 16px;
 	}
-	.container{
-	margin: 2% auto;
-	margin-top: 20px;
-	height: 1650px;
-	width: 80%;
+	.one
+	{
+		margin: 0 3%;
+		width: 94%;
 	}
-	.form-ctrl{
+	.two
+	{
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
-		margin: 3.5% 0 !important;
+		margin: 7% 0;
 	}
-	.form-ctrl input{
-		margin-left: 1px !important;
-	}
-	.form{
-	padding: 20px 3%;
-	}
-	input{
-	  font-size: 14px !important;
-	}
-	.twoInOne, .threeInOne{
-		margin: 0;
-		flex-direction: column;
+	.four,.five
+	{
 		width: 100%;
-
+		margin-bottom: 6.5%;
+		flex-direction: column;
 	}
-	#terms, #submit{
-		margin: 0 10px;
+	#btn1{
+		font-size: 14px;
+        width: 40%;
+        height: 95%;
 	}
-	p{
-		font-size: 12px;
+	#btn2{
+		font-size: 14px;
+        width: 60%;
+        height: 95%;
 	}
-	.btn-submit > button{
+	.credit-box #btn1
+	{
+		width: 55%;
+	}
+	.credit-box #btn2
+	{
+		width: 45%;
+	}
+	.btn-submit button{
 		margin-left: 0;
 		margin-top: 30px;
-		width: 90%;
-		font-size: 14px;
+		width: 100%;
+		font-size: 16px;
 	}
-	.form-ctrl small {
-		position: absolute;
-		top: 100%;
-		left: 10px;
-		visibility: hidden;
-	}  
-  }
+}
