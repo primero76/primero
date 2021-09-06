@@ -313,9 +313,28 @@ input[type="date"]
 	{
 		margin: 0;
 	}
+	input[type="text"],
+	input[type="password"],
+	input[type="number"],
+	input[type="date"]
+	{
+		font-size: 16px;
+		margin: 0 20px;
+		border: none;
+		outline: none;
+		display: block;
+		width: 90%;
+		visibility: hidden;
+	}
 	.three
 	{
 		margin-bottom: 7%;
+		border: 1px solid lightgrey;
+	}
+	label {
+		display: inline-block;
+		font-size: 16px;
+		margin: 0 15px;
 	}
 	  
 }
