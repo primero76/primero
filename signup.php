@@ -123,6 +123,11 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
     <header class="main">
         <div class="row">           
             <nav>
+                <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel" onclick="checked()">
+                    <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
                 <ul>
                     <li><i class="fa fa-home"></i><a onclick="alert('Already on this page');"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Please login first');"> Book </a></li>
