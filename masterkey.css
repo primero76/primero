@@ -157,6 +157,7 @@ footer > div
 @media only screen and (max-width: 1000px) {
   nav ul
   {
+    font-size: 12px;
     width: 96.5%;
     margin: 1.5%;
     padding-left: 15%;
@@ -164,15 +165,6 @@ footer > div
   }
 }
 @media only screen and (max-width: 800px) {
-  nav ul
-  {
-    font-size: 12px;
-    width: 96.5%;
-    margin: 0.5%;
-    padding-right: 0;
-  }
-}
-@media only screen and (max-width: 600px) {
 
   .logo {
     width: 100px;
