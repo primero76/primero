@@ -112,6 +112,49 @@ function validateMail() {
 		setErrorFor(emailInp, 'Not a valid email');		
 	}
 }
+function validateMobNum()
+{
+	var phoneno =/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
+	if(mobileInp.value === '') {
+	setErrorFor(mobileInp, 'This cannot be blank');
+	}
+	else if (mobileInp.value.match(phoneno)) 
+	{
+		setSuccessFor(mobileInp,'');
+	}
+	else {
+		setErrorFor(mobileInp, 'Invalid');
+	
+	}
+}
+var nameFormat = /^[a-z,.'-]+$/i;
+function validateFName()
+{
+	if(nameFirstInp.value === '')
+	setErrorFor(nameFirstInp, 'This cannot be blank');
+	else if (nameFirstInp.value.match(nameFormat))
+	setSuccessFor(nameFirstInp,'');
+	else
+	setErrorFor(nameFirstInp, 'Alphabets are allowed');
+}
+function validateMName()
+{
+	if(nameMiddleInp.value === '')
+	setErrorFor(nameMiddleInp, 'This cannot be blank');
+	else if (nameMiddleInp.value.match(nameFormat))
+	setSuccessFor(nameMiddleInp,'');
+	else
+	setErrorFor(nameMiddleInp, 'Alphabets are allowed');
+}
+function validateLName()
+{
+	if(nameLastInp.value === '')
+	setErrorFor(nameLastInp, 'This cannot be blank');
+	else if (nameLastInp.value.match(nameFormat))
+	setSuccessFor(nameLastInp,'');
+	else
+	setErrorFor(nameLastInp, 'Alphabets are allowed');
+}
 function validatePassword()
 {
 	if(passwordInp.value === '') {
@@ -134,14 +177,6 @@ function confirmPassword(){
 	}
 }
 
-function validateMobNum()
-{
-	if(mobileInp.value === '') {
-	setErrorFor(mobileInp, 'This cannot be blank');
-	} else {
-	setSuccessFor(mobileInp,'');
-	}
-}
 function validateCity()
 {
 	if(cityInp.value === '') {
@@ -167,30 +202,7 @@ function validateGender()
 	setSuccessFor(genderInp,'');
 	}
 }
-function validateFName()
-{
-	if(nameFirstInp.value === '') {
-		setErrorFor(nameFirstInp, 'This cannot be blank');
-	} else {
-		setSuccessFor(nameFirstInp,'');
-	}
-}
-function validateMName()
-{
-	if(nameMiddleInp.value === '') {
-		setErrorFor(nameMiddleInp, 'This cannot be blank');
-	} else {
-		setSuccessFor(nameMiddleInp,'');
-	}
-}
-function validateLName()
-{
-	if(nameLastInp.value === '') {
-		setErrorFor(nameLastInp, 'This cannot be blank');
-	} else {
-		setSuccessFor(nameLastInp,'');
-	}
-}
+
 passwordInp.onkeyup = validatePassword;
 emailInp.onkeyup = validateMail;
 nameFirstInp.onkeyup = validateFName;

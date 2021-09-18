@@ -40,28 +40,29 @@ body {
   font-size: 18px;
   line-height: 2;
 }
-
 /*For Responsive*/
 
 @media only screen and (max-width: 600px) {
   .subheading{
     width: 90%;
     font-size: 16px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin: 0 10px 0 10px;
   }
   .intro, .answer{
     width: 90%;
     font-size: 12px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin: 0 10px 0 10px;
   }
 
   .question{
     width: 90%;
     font-size: 14px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin: 0 10px 0 10px;
   }
+  .btn-submit button{
+		margin: 30px 0 0 0;
+		width: 100%;
+		font-size: 16px;
+	}
   
 }

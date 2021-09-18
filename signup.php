@@ -1,48 +1,15 @@
 <?php
 session_start();
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb_server = $cleardb_url["host"];
+    $cleardb_username = $cleardb_url["user"];
+    $cleardb_password = $cleardb_url["pass"];
+    $cleardb_db = substr($cleardb_url["path"],1);
+    $active_group = 'default';
+    $query_builder = TRUE;
+    // Connect to DB
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 $emailAdd = $password = $mobNum = $f_name = $m_name = $l_name = $city = $gender = $unchecked = "";
 $mailError = $restError ="*"; 
 if ($_SERVER['REQUEST_METHOD']=="POST")
@@ -115,16 +82,16 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
     <title> Signup </title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
     <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="masterkey.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="masterkey.css">
 </head>
 <body>
     <header class="main">
         <div class="row">           
             <nav>
-                <input type="checkbox" id="threebar">
-                <label for="threebar" class="checklabel" onclick="checked()">
+            <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel">
                     <i id="bars" class="fa fa-bars"></i>
                     <i id="cross" class="fa fa-times"></i>
                 </label>
@@ -152,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
             <button id="btn1"><i class="fa fa-user"></i> Signup </button>
             <button id="btn2"> </button>       
         </div> 
-    <form method="post" id="form" class="form">
+    <form method="post" id="form" class="form" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <h3>Let's create your credentials</h3>
     <div class="one">
         <div class="two">
@@ -196,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         <div class="two">
             <div class="five" onclick="openDivf_name()">
                 <label  id="f_namelbl"> First Name </label> <br>
-                <input id="f_nameinp" name="f_nameinp" type="text"  >
+                <input id="f_nameinp" name="f_nameinp" type="text">
                 <i class="fa fa-check-circle"></i>
                 <i class="fa fa-exclamation-circle"></i>
                 <small> <?php echo $restError ?> </small>

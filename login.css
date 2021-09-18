@@ -22,6 +22,18 @@ a
     background-color: rgb(32, 178, 170);
 	width: 75%;
 }
+#forgetBtn1
+{
+	color: rgb(32, 178, 170);
+    background-color: white;
+	width: 45%;
+}
+#forgetBtn2
+{
+	background-color: rgb(32, 178, 170);
+	width: 75%;
+	width: 55%;
+}
 .btn-box{
 	display: flex;
 	border-bottom: 1px solid #ccc;
@@ -176,7 +188,7 @@ input[type="date"]
 @media only screen and (max-width: 600px) {
 	.container
 	{
-		width: 98%;
+		width: 97%;
 	}
 	hr
 	{
@@ -245,6 +257,18 @@ input[type="date"]
 	#btn2{
 		font-size: 14px;
         width: 60%;
+        height: 95%;
+	}
+	#forgetBtn1
+	{
+		font-size: 14px;
+        width: 50%;
+        height: 95%;
+	}
+	#forgetBtn2
+	{
+		font-size: 14px;
+        width: 50%;
         height: 95%;
 	}
 	.credit-box #btn1

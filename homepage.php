@@ -1,6 +1,7 @@
 <?php
     session_start();
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+	$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
     $cleardb_password = $cleardb_url["pass"];
@@ -12,13 +13,17 @@
 
     if ($_SESSION['mail'])
     {
+        $_SESSION['start'] = time();
+        $_SESSION['expire'] = $_SESSION['start'] + (60);
+        require('timeout.php');
     $emailAdd = $_SESSION['mail'];
-    $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
     $res = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($res);
 
-    $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
-    $firstName = strtoupper(" ".$row["F_NAME"]);
+    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $firstName = strtoupper(" ".$row["fName"]);
+    
     
 ?> 
 
@@ -42,8 +47,14 @@
 </head>
 <body>
     <header class="main">
-        <div class="row">           
+        <div class="navRow">           
             <nav>
+                <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel">
+                    <small> <i class="fa fa-user-circle-o"></i> <?php echo $firstName ?></small>
+                    <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
                 <ul>
                     <li><i class="fa fa-home"></i><a onclick="alert('Already on booking page')"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a href="booking.php"> Book</a></li>
@@ -235,8 +246,5 @@
     {
         header('location:homepage.html');
     }
-?>
-<?php
-    require('timeout.php');
 ?>
     

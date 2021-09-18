@@ -18,12 +18,17 @@
 </head>
 <body>
     <header class="main">
-        <div class="row">           
+        <div class="navRow">           
             <nav>
+                <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel">
+                    <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
                 <ul>
                     <li><i class="fa fa-home"></i><a onclick="alert('Already on this page');"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Please login first');"> Book </a></li>
-                    <li><i class="fa fa-tasks"></i><a onclick="alert('Please login first');"> Manage </a></li>
+                    <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage </a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.php"> Contact Us</a></li>
                     <li><i class="fa fa-user-circle-o"></i><a class="sign" href="login.php"> Signup | Login </a></li>
                 </ul>

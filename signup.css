@@ -1,3 +1,7 @@
+a
+{
+	color: inherit;
+}
 .container {
 	background-color: #fff;
 	border-radius: 5px;
@@ -24,6 +28,7 @@ hr
 }
 #btn2{
     background-color: rgb(32, 178, 170);
+	color: white;
 	width: 75%;
 }
 .credit-box #btn1
@@ -221,10 +226,10 @@ input[type="date"]
 	visibility: visible;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
 	.container
 	{
-		width: 98%;
+		width: 97%;
 	}
 	hr
 	{
