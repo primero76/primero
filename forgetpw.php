@@ -3,15 +3,8 @@
 include('smtp/PHPMailerAutoload.php');
 session_start();
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+$conn = mysqli_connect('localhost','root');
+mysqli_select_db($conn,'flight_booking');
 
 $err = "";
 if ($_SERVER['REQUEST_METHOD']=="POST")
@@ -25,11 +18,19 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
     {
         $sub = 'Password Reset';
         $generator = rand(4321,9999);
-        $body = "  Hi, This is Primero Avioinics, we have encounter a password reset request. If it is you then,
-            Enter the following code to reset your password
+        $body = "
+  <h1 style='margin-left:15% ;'>
+        Hello Welcome To <u> Primero Avionics </u>. 
+        <br>
+        We have Encoutered a Password reset request.
+        <br>
+        If it is you then enter the following code.
+    </h1>
+    <p style='border: rgb(0, 0, 0) solid 2px;margin-left:20% ;font-weight: bold;padding: 0 2%;background-color: rgb(32, 178, 170); width: 4%; font-size: 30px; color: rgb(255, 255, 255);'>
+    $generator
+    </p>
+";
         
-        
-            $generator";
         
         function smtp_mailer($to,$subject, $msg){
             $mail = new PHPMailer(); 
@@ -60,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         }
         
         smtp_mailer($_POST['emailinp'],$sub,$body);
-            $_SESSION['mail'] = $to_email;
-            $_SESSION['code'] = $generator;   
+        $_SESSION['mail'] = $to_email;
+        $_SESSION['code'] = $generator;   
         header('location:forgetReg.php');
     }
     else

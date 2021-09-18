@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+   $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
     $cleardb_password = $cleardb_url["pass"];
@@ -11,28 +11,28 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    if ($_SESSION['mail'])
+
+    $selQ = "select * from faqs";
+    $run = mysqli_query($conn,$selQ);
+    if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
-    $emailAdd = $_SESSION['mail'];
-    
-    $squeryl  = "select * from signup where pEmail =  '$emailAdd' ";
-    $res1 = mysqli_query($conn,$squeryl);
-    $row1 = mysqli_fetch_assoc($res1);
+        $question = $_POST['newQuestion'];
+        $answer = $_POST['newAnswer'];
 
-    $fullName = $row1["fName"]." ".$row1["mName"]." ".$row1["lName"];
-    $firstName = strtoupper(" ".$row1["fName"]);
-?> 
-
+        $s ="INSERT INTO faqs(question,answer) VALUES ('$question','$answer')";
+        mysqli_query($conn,$s);
+    }
+?>  
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> BOOKING </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>MTA Airlines - Book Flights & Enjoy</title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
     <link rel="stylesheet" href="masterkey.css">
-    <link rel="stylesheet" href="booking.css">
+    <link rel="stylesheet" href="faq.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -42,16 +42,15 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
             <nav>
             <input type="checkbox" id="threebar">
                 <label for="threebar" class="checklabel">
-                    <small> <i class="fa fa-user-circle-o"></i> <?php echo $firstName ?></small>
                     <i id="bars" class="fa fa-bars"></i>
                     <i id="cross" class="fa fa-times"></i>
                 </label>
                 <ul>
-                    <li><i class="fa fa-home"></i><a href="homepage.php"> About Us </a></li>
-                    <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
+                    <li><i class="fa fa-home"></i><a onclick="homepage.html"> About Us </a></li>
+                    <li><i class="fa fa-newspaper-o"></i><a href="booking.php"> Book</a></li>
                     <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.php"> Contact Us</a></li>
-                    <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
+                    <li><i class="fa fa-user-circle-o"></i><a class="sign" href="login.php"> Signup | Login </a></li>
                 </ul>
             </nav>
         </div>
@@ -65,23 +64,65 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
             <h1 class="name2"> Avionics </h1>
         </div>
     </div>
-    <div class="container">
-        <div class="btn-box">
-            <button id="btn1" onclick="openBook();"><i class="fa fa-plane"></i> Book </button>
-            <button id="btn2" onclick="openFlightDetails();"><i class="fa fa-id-card"></i> <a href="tracking.php"> Flight Status </a></button>         
-        </div> 
-    <form method="post" id="form" class="form" action="myticket.php">
-    <h2> Flight has been booked successfully </h2>
-    <h3 class="tr"> Your tracking id has been sent to your email address </h3>
-    <div class="one">
-        <div class="btn-submit" id="submit">
-            <button type="submit" id= "crtAcc" onclick="show()"> Generate Ticket </button>
-        </div>
-    </div> 
-    </form>
-</div>
+    <div class="row-homepage">
+        <h1 class="subheading"> Top Frequently Asked Questions </h1> <br>
 
-<div class="footer-wave" >           
+        <p class="question">
+            1. Why can't I open the book flights page?
+        </p>
+        <p class="answer">
+            In order to book flights from this website, you have to make sure that you are signed in with
+            your account. You can sign up if you do not have an account.
+            After logging in, you can visit the Book page in the navigation bar and book your flights to travel
+            anywhere in Pakistan.
+        </p>
+        <p class="question">
+            2. Can I select seats of the same class i.e. Business and Economy?
+        </p>
+        <p class="answer">
+            No, you can not select seats of the same class simultaneously. However, if you want to select seats
+            of the same class, you can first book the seats for the business class and then the seats for the economy
+            class, or vice-versa.
+        </p>
+        <p class="question">
+            3. Why can't I select any seat from my flight?
+        </p>
+        <p class="answer">
+            If you are not able to select seats in the seat selection phase of your desirable flight, 
+            it probably means that all of the seats are booked and therefore, they are unavailable.
+        </p>
+        <p class="question">
+            4. Is there an option for a return ticket or a multi-city ticket?
+        </p>
+        <p class="answer">
+            Currently, features regarding return tickets or multi-city tickets are unavailable. 
+            If you want to buy a return ticket, you can simply buy two one-way tickets for vice-versa source and
+            destination.
+        </p>
+        <?php 
+        $i = 5;
+        while($fqs = mysqli_fetch_assoc($run))
+        { 
+        ?>
+        <p class="question">
+        <?php        
+            echo "$i."." "."$fqs[question]";
+        ?>
+        </p>
+        <p class="answer">
+        <?php
+            echo "$fqs[answer]";
+        ?>
+        </p>
+        <?php
+        $i+=1;
+        }
+        ?>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br>
+
+
+    <div class="footer-wave" >           
     <div class="wave-decoration">
       <div class="wave02">
           <svg version="1.1" width="100%" height="131" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100% 131.2" style="enable-background:new 0 0 100% 131.2;" xml:space="preserve">
@@ -107,10 +148,9 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 <div>
  <br>
  <div class="footer-content">
-      <a href="homepage.php">About Us</a>&emsp14; | &emsp14;
-     <a href="booking.php">Book Flights</a>&emsp14; | &emsp14;
-     <a href="faq.html">FAQs</a>&emsp14; | &emsp14;
-     <a href="contact.php">Contact Us</a>
+    <a href="homepage.html">About Us</a>&emsp14; | &emsp14;
+    <a href="login.php"> Login </a>&emsp14; | &emsp14;
+    <a href="contact.php">Contact Us</a>
  </div>
  <br>
  <br>
@@ -120,13 +160,6 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
  <p class="copyright"> Primero Avionics © 2018</p>
 </div>
 </footer>
-<script src="booking.js"></script>
+
 </body>
 </html>
-<?php
-    }
-    else
-    {
-        header('location:login.php');
-    }
-?>

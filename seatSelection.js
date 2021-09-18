@@ -19,7 +19,7 @@ function limit_checkbox(name,obj,max)
 To select this option unselect one of the others.');
       obj.checked = false;
       }
-   }
+}
 
 function openBook(){
     content1.style.visibility = "visible";

@@ -12,22 +12,53 @@ body{
 .flightForm 
 {
     width: 80% ;
-    height: 800px ;
+    height: 1000px ;
     margin: 205px auto ;
     margin-top: 20px ;
     position: relative ;
     overflow-y: auto ;
     border: solid 1px lightseagreen ;
     border-radius: 10px 10px 0 0 ;
-    box-shadow: 0 20px 30px #13090933 ;
+    box-shadow: 0 20px 30px lightseagreen ;
 }
 
-.btn-box{
-    height: 8% !important;
+#btn1{
+    color: rgb(32, 178, 170);
+    background-color: white;
+	width: 25%;
 }
-.box
-{
-    margin-bottom: 8% !important;
+#btn2{
+    background-color: rgb(32, 178, 170);
+	color: white;
+	width: 75%;
+	padding-right: 600px;
+}
+.btn-box{
+	display: flex;
+	border-bottom: 1px solid #ccc;
+}
+.btn-box button{
+	background: transparent; 
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 20%;
+	padding: 14px 16px;
+	font-size: 20px;
+	font-weight: bold;    
+}
+.btn-submit button{
+    background-color: lightseagreen;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    width: 15%;
+    padding: 14px 16px;
+    font-size: 20px;
+    font-weight: bold;
+	float: right;
+	margin: 50px 5% 50px 2%;
 }
 i:hover{
     color: rgb(0, 0, 0);
@@ -54,37 +85,6 @@ label{
     margin-top: 20px;
     
 }
-
-@media screen and (max-width: 600px) {
-
-    h1{
-        font-size: 18px;
-    }
-
-    label {
-        font-size: 14px;
-    }
-    input  {
-        font-size: 14px;
-    }
-    .form{
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-    td{
-        display: block;
-    }
-    .box
-    {
-        margin-top: 8% !important;
-    }
-}
-
-#btn4{
-    float: right;
-}
-
-
 
 /*
 <input placeholder=Children type="hidden" id="childInp" >
@@ -240,4 +240,55 @@ input:disabled + label{
     float: right; 
     margin-right: 20px; 
     margin-top: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .flightForm
+    {
+        width: 95%;
+        margin: 50px auto 135px auto;
+    }     
+    #btn1{
+		font-size: 14px;
+        width: 55%;
+        height: 95%;
+	}
+	#btn2{
+		font-size: 14px;
+        width: 45%;
+        padding: 0%;
+	}
+    .seat-img {
+        margin: 20px 0 0 30%;
+        float: none;
+    }
+	.btn-submit button{
+		margin: 40px 10px 50px 10px;
+		width: 94%;
+		font-size: 16px;
+	}
+    h1{
+        font-size: 18px;
+    }
+    .upper
+    {
+        margin-top: 80px;
+    }
+    label {
+        font-size: 14px;
+    }
+    input  {
+        font-size: 14px;
+    }
+    .form{
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    td{
+        display: block;
+    }
+    .box
+    {
+        margin-top: 8% !important;
+    }
 }

@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+   $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
     $cleardb_password = $cleardb_url["pass"];
@@ -9,37 +9,28 @@
     $active_group = 'default';
     $query_builder = TRUE;
     // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-    
-    if ($_SESSION['mail'])
-    {
-    $emailAdd = $_SESSION['mail'];
-    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
-    $res = mysqli_query($conn,$sql);
-    $row = mysqli_fetch_assoc($res);
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db); 
 
-    $firstName = strtoupper(" ".$row["fName"]);
-    
-    $from = $_SESSION['from'];
-    $to = $_SESSION['to'];
-    $date = $_SESSION['date'];
-    $sclass = $_SESSION['seatClass'];
-    $b_price = "PKR 18,000";
-    $e_price = "PKR 12,000";
-    if ($sclass == 'Business')
-    {
-        $price = $b_price;
-    }
-    else
-    {
-        $price = $e_price;
-    }
-    $_SESSION['ticketPrice'] = $price;
-    $query1 = "SELECT * from flightdetails where departure = '$from' and destination='$to'";
-    $res = mysqli_query($conn, $query1);
-    $num = mysqli_num_rows($res);
-            
+    $trackingID = $_POST['track'];    
+    $sql1  = "select * from flightdetails where flightsDetailsId = (select flightsDetailsId from flightdate where detailsId = (select detailsId from bookedflights where trackingId =  '$trackingID')) ";
+    $res1 = mysqli_query($conn,$sql1);
+    $row1 = mysqli_fetch_assoc($res1);
+
+    $sql2  = "select * from seats where trackingId = $trackingID";
+    $res2 = mysqli_query($conn,$sql2);
+    $num1 = mysqli_num_rows($res2);
+
+    $sql3  = "select * from flightdate where detailsId = (select detailsId from bookedflights where trackingId =  '$trackingID')";
+    $res3 = mysqli_query($conn,$sql3);
+    $row3 = mysqli_fetch_assoc($res3);
+
+    $sql4  = "select * from bookedflights where trackingId =  '$trackingID'";
+    $res4 = mysqli_query($conn,$sql4);
+    $row4 = mysqli_fetch_assoc($res4);
+
+    $emailAdd = "";
 ?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +40,7 @@
     <title> BOOKING </title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
     <link rel="stylesheet" href="masterkey.css">
-    <link rel="stylesheet" href="searchFlights.css">
+    <link rel="stylesheet" href="validTrack.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -60,6 +51,7 @@
             <input type="checkbox" id="threebar">
                 <label for="threebar" class="checklabel">
                 <small> <i class="fa fa-user-circle-o"></i> <?php echo $firstName ?></small>
+                    
                     <i id="bars" class="fa fa-bars"></i>
                     <i id="cross" class="fa fa-times"></i>
                 </label>
@@ -68,8 +60,28 @@
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.php"> Contact Us</a></li>
-                    <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>             
-            </ul>
+<?php
+if ($emailAdd = $_SESSION['mail'])
+{
+$emailAdd = $_SESSION['mail'];
+$sql  = "select * from signup where pEmail =  '$emailAdd' ";
+$res = mysqli_query($conn,$sql);
+$row = mysqli_fetch_assoc($res);
+
+$fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+$firstName = strtoupper(" ".$row["fName"]);
+?>
+                    <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
+<?php
+}
+else
+{
+    ?>
+    <li><i class="fa fa-user-circle-o"></i><a href="login.php"> SIGNUP | LOGIN </a> </li>
+<?php
+}
+?>                
+</ul>
             </nav>
         </div>
     </header>
@@ -87,23 +99,14 @@
         <div class="btn-box">
             <button id="btn1" ><i class="fa fa-plane"></i> <a href="booking.php"> Book </a> </button>
             <button id="btn2" ><i class="fa fa-id-card"></i> <a href="tracking.php"> Flight Status </a></button> 
+            <button id="btn3" > </button> 
         </div> 
-        <?php
-    if ($num != 0)
-    {
-    ?>
-    <h2> Available Flights </h2>
-    <?php
-    }
-    else
-    {
-    ?>
-        <h2>  </h2>
-    <?php
-    }
-    ?>
+    <h2> Track Flights </h2>
     <div class="one">
         <div class="two">
+            <div class="five">
+                <label> FLIGHT NAME </label> 
+            </div>
             <div class="five">
                 <label> DEPARTURE </label> 
             </div>
@@ -117,24 +120,21 @@
                 <label> TIME </label> 
             </div>            
             <div class="five">
-                <label> PRICE </label> 
+                <label> SEATS </label> 
             </div>
             <div class="five">
-                <label> FLIGHTNAME </label> 
-            </div> 
-            <div class="five" style="border:none">
-                <label>  </label> 
+                <label> PASSENGERS </label> 
             </div>            
         </div>
     </div>  
     <?php
-    if ($num == 0)
+    if ($num1 == 0)
     {
     ?>
     <div class="one">
     <div class="two">
         <div class="three">
-                <label> No Flights Available </label> 
+                <label> Tracking Id Does not Exist </label> 
             </div>
         </div>
     </div> 
@@ -142,41 +142,64 @@
     }
     else
     {  
-    while($row = mysqli_fetch_assoc($res))
-    {
     ?>  
-    <div class="one_one">
+        <div class="one_one">
         <div class="two">
             <div class="five">
-                <label><?php echo $row['departure']; ?></label>
+                <label> <?php echo $row1['flightName']; ?> </label> 
             </div>
             <div class="five">
-                <label> <?php echo $row['destination']; ?>  </label> 
+                <label><?php echo $row1['departure']; ?></label>
             </div>
             <div class="five">
-                <label> <?php echo $date; ?> </label> 
+                <label> <?php echo $row1['destination']; ?>  </label> 
             </div>
             <div class="five">
-                <label id='time' name="time" value="$time"> <?php echo $row['departureTime']; ?> </label> 
-            </div>   
-            <div class="five">
-                <label> <?php echo $price;?> </label> 
+                <label> <?php echo $row3['departureDate']; ?> </label> 
             </div>
             <div class="five">
-                <label> <?php echo $row['flightName']; ?> </label> 
-            </div> 
-            <div class="five" style="border:none;">
-                <label class="selectrow" > <button type="submit"> <a href="validation.php?depID=<?php echo $row["flightsDetailsId"];?>"> Select </a> </button> </label> 
+                <label> <?php echo $row1['departureTime']; ?> </label> 
             </div>            
-        </div> 
-    </div> 
+            <div class="five" id="scroll" onmouseover="vis()" onmouseout="unvis()">
+            <script>
+            function vis()
+            {
+                document.getElementById("scroll").style.border = "1px solid lightseagreen";
+                document.getElementById("scroll").style.overflow = "visible";
+                document.getElementById("scroll").style.height = "106px";
+                document.getElementById("scroll").style.transition = "1s";
+            }
+            function unvis()
+            {
+                document.getElementById("scroll").style.border = "1px solid lightseagreen";
+                document.getElementById("scroll").style.overflow = "hidden";
+                document.getElementById("scroll").style.height = "45px";
+                document.getElementById("scroll").style.transition = "1s";
+            }
+            </script>
+                <label> 
+                <?php
+            while ($row2 = mysqli_fetch_assoc($res2)) {
+            ?>
+            <label><?php echo $row2['seatNo']; ?> </label><br>
+            <?php
+            }
+            ?>
+                </label> 
+            </div>
+            <div class="five">
+                <label> <?php echo $row4['noOfPassengers']; ?> </label> 
+            </div>            
+        </div>
+    </div>  
     <?php
     }
-}
     ?>
-    <div class='space'>
-
-</div>
+    <div class="sub">
+        <div class="btn-submit" id="submit">
+            <button> <a href="tracking.php"> Back </a></button>
+        </div>
+    </div> 
 </div>
 
 <div class="footer-wave" >           
@@ -203,32 +226,21 @@
 </div>
 <footer class="foot">
 <div>
- <br>
+ 
  <div class="footer-content">
       <a href="homepage.php">About Us</a>&emsp14; | &emsp14;
      <a href="booking.php">Book Flights</a>&emsp14; | &emsp14;
      <a href="faq.html">FAQs</a>&emsp14; | &emsp14;
      <a href="contact.php">Contact Us</a>
  </div>
- <br>
- <br>
+ 
+ 
  <div class="icons-footer"><a href="#"><i class="fa fa-facebook"></i></a>&emsp14;<a href="#"><i class="fa fa-twitter"></i></a>&emsp14;<a href="#"><i class="fa fa-snapchat"></i></a>&emsp14;<a href="#"><i class="fa fa-instagram"></i></a></div>
- <br>
- <br>    
+ 
+     
  <p class="copyright"> Primero Avionics © 2018</p>
 </div>
 </footer>
 <script src="booking.js"></script>
 </body>
 </html>
-
-<script src="booking.js"></script>
-</body>
-</html>
-<?php
-    }
-    else
-    {
-        header('location:login.php');
-    }
-?>

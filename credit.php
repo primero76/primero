@@ -1,3 +1,25 @@
+<?php
+    session_start();
+
+    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb_server = $cleardb_url["host"];
+    $cleardb_username = $cleardb_url["user"];
+    $cleardb_password = $cleardb_url["pass"];
+    $cleardb_db = substr($cleardb_url["path"],1);
+    $active_group = 'default';
+    $query_builder = TRUE;
+    // Connect to DB
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
+    if ($_SESSION['mail'])
+    {
+    $emailAdd = $_SESSION['mail'];
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
+    $res = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($res);
+
+    $firstName = strtoupper(" ".$row["fName"]);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +35,21 @@
     
 </head>
 <body>
-    <header class="main">
+<header class="main">
         <div class="row">           
             <nav>
+            <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel">
+                <small> <i class="fa fa-user-circle-o"></i> <?php echo $firstName ?></small>
+                    <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
                 <ul>
                     <li><i class="fa fa-home"></i><a href="index.php"> About Us</a></li>
                     <li><i class="fa fa-newspaper-o"></i><a href="book.html"> Book</a></li>
                     <li><i class="fa fa-tasks"></i><a href="#"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a href="contact.html"> Contact Us</a></li>
-                    <li><i class="fa fa-user-circle-o"></i><a href="login.php"> Login </a></li>
+                    <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li> 
                 </ul>
             </nav>
         </div>
@@ -40,7 +68,7 @@
             <button id="btn2"> </button>                  
         </div> 
     
-        <form id="form" class="form" method="POST" action="ccregister.php"><h3>Let's create your credentials</h3>
+        <form id="form" class="form" method="POST" action="ccregister.php"><h3> Enter Your Credit Card Details</h3>
     <div class="one">
         <div class="two">
             <div class="three" onclick="openDivCard()">
@@ -71,7 +99,7 @@
     <div class="one">
         <div class="btn-submit" id="submit">
             <small class="check"> </small><br>
-            <button type="submit" id= "crtAcc" onclick="show()"> Create Account </button>
+            <button type="submit" id= "crtAcc" onclick="show()"> Submit </button>
         </div>
     </div> 
     </form>
@@ -129,3 +157,10 @@
 
 </body>
 </html>
+<?php
+    }
+    else
+    {
+        header('location:login.php');
+    }
+?>

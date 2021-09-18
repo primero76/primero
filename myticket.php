@@ -1,7 +1,6 @@
 <?php
     session_start();
 
-   //Get Heroku ClearDB connection information
     $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
@@ -12,27 +11,36 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
+    
+    if ($_SESSION['mail'])
+    {
     $emailAdd = $_SESSION['mail'];
-    $sql  = "select * from signup where EMAIL =  '$emailAdd' ";
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
     $res = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($res);
 
-    $ID = $_SESSION['track'];
+    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $firstName = strtoupper(" ".$row["fName"]);
     
-    $sql2  = "select * from seats where ID = $ID";
-    $res2 = mysqli_query($conn,$sql2);
-    
-
-    $fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
-    $firstName = strtoupper(" ".$row["F_NAME"]); 
     $from = $_SESSION['from'];
     $to = $_SESSION['to'];
     $date = $_SESSION['date'];
     $sclass = $_SESSION['seatClass'];
     $fare = $_SESSION['ticketPrice'];
-    $time = $_SESSION['timing'];
-    $ID = $_SESSION['track'];
+    $time = $_SESSION['time'];
+    $ID = $_SESSION['tracking'];
+    $flightName = $_SESSION['flyName'];
+    
+    $sql4  = "select * from cities where CITY_NAME = '$from'";
+    $res4 = mysqli_query($conn,$sql4);
+    $flightfrom = mysqli_fetch_assoc($res4);
 
+    $sql5  = "select * from cities where CITY_NAME = '$to'";
+    $res5 = mysqli_query($conn,$sql5);
+    $flightto = mysqli_fetch_assoc($res5);
+
+    $sql2  = "select * from seats where trackingId = '$ID'";
+    $res2 = mysqli_query($conn,$sql2);    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,10 +54,8 @@
 </head>
 <body>
 <div id="pdf">
-    <?php
-    while($row2 = mysqli_fetch_assoc($res2))
+<?php while($row2 = mysqli_fetch_assoc($res2))
 {
-
 ?>
 <div class='all'>
     
@@ -57,16 +63,16 @@
         <table>
             <tr>
                 <td>
-                    <p > FLIGHT <br> <span> MTA AIRWAYS MTA31 </span> </p>
+                    <p > FLIGHT <br> <span> <?php echo $flightName ?></span> </p>
                 </td>
                 <td>
-                    <p > DEPARTURE <br> <span> <?php echo $from?> </span> </p>
+                    <p > DEPARTURE <br> <span> <?php echo $from ." ". $flightfrom['CITY_CODE'] ?> </span> </p>
                 </td>
                 <td>
-                    <p > DESTINATION <br> <span> <?php echo $to?> </span> </p>
+                    <p > DESTINATION <br> <span>  <?php echo $to ." ". $flightto['CITY_CODE'] ?> </span> </p>
                 </td>
                 <td>
-                    <p class = "last"> FLIGHT <br> <span> MTA AIRWAYS MTA31 </span> </p>
+                    <p class = "last"> FLIGHT <br> <span><?php echo $flightName ?> </span> </p>
                 </td>
             </tr>
             
@@ -92,10 +98,10 @@
         <table>
             <tr>
                 <td>
-                    <p > DEPARTURE <br> <span> <?php echo $from?> </span> </p>
+                    <p > DEPARTURE <br> <span> <?php echo $from ." ". $flightfrom['CITY_CODE'] ?> </span> </p>
                 </td>
                 <td>
-                    <p > DESTINATION <br> <span> <?php echo $to?> </span> </p>
+                    <p > DESTINATION <br> <span>  <?php echo $to ." ". $flightto['CITY_CODE'] ?> </span> </p>
                 </td>
                 <td>
                     <p > DATE <br> <span> <?php echo $date?></span> </p>
@@ -117,7 +123,7 @@
                     <p > class <br> <span>  <?php echo $sclass?> </span> </p>
                 </td>
                 <td >
-                    <p > SEAT <br> <span> <?php echo $row2["SEAT_NO"];?> </span> </p>
+                    <p > SEAT <br> <span> <?php echo $row2['seatNo'];?> </span> </p>
                 </td>
                 <td>
                     <p class = "last"> PRICE <br> <span> <?php echo $fare?> </span> </p>
@@ -138,3 +144,10 @@
 </body>
 
 </html>
+<?php
+    }
+    else
+    {
+        header('location:login.php');
+    }
+?>

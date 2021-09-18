@@ -1,8 +1,7 @@
 <?php
     session_start();
-    
-    //Get Heroku ClearDB connection information
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+   $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
     $cleardb_password = $cleardb_url["pass"];
@@ -12,24 +11,30 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    $ID = $_GET['deptID'];
-    $num = rand(100000000000000,999999999999999);
-    $trackingId = $num;
+    $date = $_SESSION['date'];
+    $ID = $_GET['depID'];
     
-    $query1 = "SELECT * FROM details where DETAILS_ID='$ID';"
+    $query1 = "select * from flightdate where flightsDetailsId='$ID' and departureDate = '$date' ";
     $result = mysqli_query($conn,$query1);
     $row = mysqli_fetch_assoc($result);
-    $from = $_SESSION['from'];
-    $to = $_SESSION['to'];
-    $date = $_SESSION['date'];
-    $time = $row['departuretime'];
-    $flight = $row['flightname'];
-
-    $insquery2 = "UPDATE flightdata SET TRACKING_ID='$trackingId',FLY_TIME='$time',FLIGHT_NAME='$flight' WHERE FLY_FROM = '$from' and FLY_TO = '$to' and FLY_ON = '$date'";
+    $setDetailsId = $row['detailsId']; 
+    $trackId = $_SESSION['tracking'];
+    $sclass = $_SESSION['seatClass'];
+    $noOfPassengers = $_SESSION['passengerCount'];
+    
+    $insquery2 = "insert into bookedflights(trackingId,detailsId, class, noOfPassengers) VALUES ('$trackId','$setDetailsId','$sclass','$noOfPassengers')";
     mysqli_query($conn,$insquery2);
 
-    $_SESSION['time'] = $time;
-    $_SESSION['name'] =  $flight;
-    $_SESSION['track'] = $trackingId;
-    header("location:seatSelection.php");
+    $wq = "select * from flightdetails WHERE flightsDetailsId = '$ID'";
+    $rest = mysqli_query($conn,$wq);
+    $row1 = mysqli_fetch_assoc($rest);
+
+    $_SESSION['depFrom'] = $row1['departure'];
+    $_SESSION['depTo'] = $row1['destination'];
+    $_SESSION['flyName'] = $row1['flightName'];
+    $_SESSION['depDate1'] = $date;
+    $_SESSION['depTime1'] = $row1['departureTime'];
+    $_SESSION['detailsID'] = $setDetailsId;
+
+    header('location:seatSelection.php');
 ?>
