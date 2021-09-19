@@ -12,6 +12,17 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $emailAdd = $password = $mobNum = $f_name = $m_name = $l_name = $city = $gender = $unchecked = "";
 $mailError = $restError ="*"; 
+
+
+    
+function test_input($data) 
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 if ($_SERVER['REQUEST_METHOD']=="POST")
 { 
     if ($_POST['emailinp'] != '')
@@ -48,14 +59,6 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         $gender = test_input($_POST['genderinp']);
     } 
     $m_name = test_input($_POST['m_nameinp']);
-    
-    function test_input($data) 
-    {
-      $data = trim($data);
-      $data = stripslashes($data);
-      $data = htmlspecialchars($data);
-      return $data;
-    }
 
     if ($emailAdd && $password && $mobNum && $f_name && $m_name && $l_name && $city && $gender)
     { 
