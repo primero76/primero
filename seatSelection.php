@@ -11,6 +11,13 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);    
 
+    if ((time() - $_SESSION['start_time']) > 60)
+    {
+        header('location:logout.php');
+    }
+    else
+    {
+        $_SESSION['start_time'] = time();
     if ($_SESSION['mail'])
     {
     $emailAdd = $_SESSION['mail'];    
@@ -417,5 +424,6 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     else
     {
         header('location:login.php');
+    }
     }
 ?>
