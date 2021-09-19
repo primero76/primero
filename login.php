@@ -18,8 +18,8 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $_SESSION['start_time'] = time();
-        $emailAdd = $_POST['emailinp'];
-        $password = $_POST['passwordinp'];
+        $emailAdd = test_input($_POST['emailinp']);
+        $password = test_input($_POST['passwordinp']);
         $s  = "select * from signup where pEmail =  '$emailAdd' && pPassword = '$password' ";
         $result = mysqli_query($conn,$s);
         $num = mysqli_num_rows($result);
@@ -32,6 +32,13 @@
             $err = "*Invalid Username or password";         
         }
     }
+function test_input($data) 
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>  
 
 <!DOCTYPE html>
