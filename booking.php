@@ -15,6 +15,14 @@
     $select = mysqli_query($conn,$sel);
     $sel2 = "select * from cities";
     $select2 = mysqli_query($conn,$sel2);
+    
+    if ((time() - $_SESSION['start_time']) > 10)
+    {
+        header('location:logout.php');
+    }
+    else
+    {
+        $_SESSION['start_time'] = time();
 
     if ($_SESSION['mail'])
     {
@@ -189,4 +197,5 @@
     {
         header('location:login.php');
     }
+ }
 ?>
