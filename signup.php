@@ -14,15 +14,6 @@ $emailAdd = $password = $mobNum = $f_name = $m_name = $l_name = $city = $gender 
 $mailError = $restError ="*"; 
 
 
-    
-function test_input($data) 
-{
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
 if ($_SERVER['REQUEST_METHOD']=="POST")
 { 
     if ($_POST['emailinp'] != '')
@@ -59,9 +50,15 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         $gender = test_input($_POST['genderinp']);
     } 
     $m_name = test_input($_POST['m_nameinp']);
+}
 
-    if ($emailAdd && $password && $mobNum && $f_name && $m_name && $l_name && $city && $gender)
-    { 
+function test_input($data) 
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
         $sql = "select * from signup where pEmail = '$emailAdd'";
         $result = mysqli_query($conn,$sql);
         $num = mysqli_num_rows($result);
@@ -82,8 +79,6 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
             mysqli_query($conn,$insquery);
             header("location:login.php");
         }
-    } 
-}
 
 ?>
 <!DOCTYPE html>
