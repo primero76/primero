@@ -16,7 +16,7 @@
     $sel2 = "select * from cities";
     $select2 = mysqli_query($conn,$sel2);
     
-    if ((time() - $_SESSION['start_time']) > 10)
+    if ((time() - $_SESSION['start_time']) > 60)
     {
         header('location:logout.php');
     }
