@@ -55,8 +55,8 @@ if (isset($_SESSION['mail']))
                 </label>
                 <ul>
                     <li><i class="fa fa-home"></i><a href="index.php"> About Us </a></li>
-                    <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
-                    <li><i class="fa fa-tasks"></i><a onclick="alert('Please login First')"> Manage</a></li>
+                    <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Please login first');"> Book </a></li>
+                    <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a onclick="alert('Already on contact Us page')"> Contact Us</a></li>
 <?php
 if (isset($_SESSION['mail']))
