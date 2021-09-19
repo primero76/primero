@@ -12,75 +12,66 @@ $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 $emailAdd = $password = $mobNum = $f_name = $m_name = $l_name = $city = $gender = $unchecked = "";
 $mailError = $restError ="*"; 
-
-
 if ($_SERVER['REQUEST_METHOD']=="POST")
 { 
     if ($_POST['emailinp'] != '')
     {
-        $emailAdd = test_input($_POST['emailinp']);
+        $emailAdd = $_POST['emailinp'];
     }
     if ($_POST['passwordinp'] != '')
     {
-        $password = test_input($_POST['passwordinp']);
+        $password = $_POST['passwordinp'];
     }
     if ($_POST['mobNuminp']!='')
     {
-        $mobNum = test_input($_POST['mobNuminp']);
+        $mobNum = $_POST['mobNuminp'];
     }
     if ($_POST['f_nameinp'] !='')
     {
-        $f_name = test_input($_POST['f_nameinp']);
+        $f_name = $_POST['f_nameinp'];
     }   
     if ($_POST['l_nameinp'] !='')
     {
-        $l_name = test_input($_POST['l_nameinp']);
+        $l_name = $_POST['l_nameinp'];
     }   
     if ($_POST['dobinp'] !='')
     {
-        $dateOfBirth = test_input($_POST['dobinp']);
+        $dateOfBirth = $_POST['dobinp'];
     }
 
     if ($_POST['cityinp'] != '')
     {
-        $city= test_input($_POST['cityinp']);
+        $city= $_POST['cityinp'];
     }
     if ($_POST['genderinp'] !='')
     {
-        $gender = test_input($_POST['genderinp']);
+        $gender = $_POST['genderinp'];
     } 
-    $m_name = test_input($_POST['m_nameinp']);
+    $m_name = $_POST['m_nameinp'];
+    if ($emailAdd && $password && $mobNum && $f_name && $m_name && $l_name && $city && $gender)
+    { 
+        $sql = "select * from signup where pEmail = '$emailAdd'";
+        $result = mysqli_query($conn,$sql);
+        $num = mysqli_num_rows($result);
+        if ($num==1)
+        {
+            $mailError = "* Email id already taken";
+        }
+        else if($num==0)
+        {
+            $mailError = "*";
+            $num = rand(0,100);
+            $username = strtolower($f_name.$l_name."$num");
+            $today = date("Y-m-d");
+            $diff = date_diff(date_create($dateOfBirth), date_create($today));
+            $age = $diff->format('%y');
+
+            $insquery = "insert into signup(fName,mName,lName,pUsername,pPassword, pEmail, pNum, pCity, pGender, pDob, pAge) values ('$f_name','$m_name','$l_name','$username','$password','$emailAdd','$mobNum','$city','$gender','$dateOfBirth','$age')";
+            mysqli_query($conn,$insquery);
+            header("location:login.php");
+        }
+    } 
 }
-
-function test_input($data) 
-{
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
-
-    $sql = "select * from signup where pEmail = '$emailAdd'";
-    $result = mysqli_query($conn,$sql);
-    $num = mysqli_num_rows($result);
-    if ($num==1)
-    {
-        $mailError = "* Email id already taken";
-    }
-    else if($num==0)
-    {
-        $mailError = "*";
-        $num = rand(0,100);
-        $username = strtolower($f_name.$l_name."$num");
-        $today = date("Y-m-d");
-        $diff = date_diff(date_create($dateOfBirth), date_create($today));
-        $age = $diff->format('%y');
-
-        $insquery = "insert into signup(fName,mName,lName,pUsername,pPassword, pEmail, pNum, pCity, pGender, pDob, pAge) values ('$f_name','$m_name','$l_name','$username','$password','$emailAdd','$mobNum','$city','$gender','$dateOfBirth','$age')";
-        mysqli_query($conn,$insquery);
-        header("location:login.php");
-    }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +79,7 @@ function test_input($data)
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Sign Up - Primero Avionics </title>
+    <title> Signup </title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
     <link rel="stylesheet" href="signup.css">
     <link rel="stylesheet" href="masterkey.css">
@@ -128,7 +119,7 @@ function test_input($data)
             <button id="btn1"><i class="fa fa-user"></i> Signup </button>
             <button id="btn2"> </button>       
         </div> 
-    <form method="post" id="form" class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="post" id="form" class="form" action="<?php echo $_SERVER["PHP_SELF"];?>">
     <h3>Let's create your credentials</h3>
     <div class="one">
         <div class="two">
