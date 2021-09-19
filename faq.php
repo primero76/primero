@@ -42,7 +42,53 @@
             <nav>
             <input type="checkbox" id="threebar">
                 <label for="threebar" class="checklabel">
-                    <i id="bars" class="fa fa-bars"></i>
+<?php
+if (isset($_SESSION['mail']))
+{
+    $emailAdd = $_SESSION['mail'];
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
+    $res = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($res);
+
+    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $firstName = strtoupper(" ".$row["fName"]);
+
+?>
+                    <small> <i class="fa fa-user-circle-o"></i> <?php echo $firstName ?></small>
+<?php
+}
+?>
+                  <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
+                <ul>
+                    <li><i class="fa fa-home"></i><a href="index.php"> About Us </a></li>
+                    <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
+                    <li><i class="fa fa-tasks"></i><a onclick="alert('Please login First')"> Manage</a></li>
+                    <li><i class="fa fa-address-book"></i><a onclick="alert('Already on contact Us page')"> Contact Us</a></li>
+<?php
+if (isset($_SESSION['mail']))
+{
+    $emailAdd = $_SESSION['mail'];
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
+    $res = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($res);
+
+    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $firstName = strtoupper(" ".$row["fName"]);
+
+?>
+                    <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
+<?php 
+}
+else
+{
+?>
+                    <li><i class="fa fa-user-circle-o"></i><a href="login.php"> SIGNUP | LOGIN </a> </li>
+<?php 
+}
+?>                    
+<i id="bars" class="fa fa-bars"></i>
                     <i id="cross" class="fa fa-times"></i>
                 </label>
                 <ul>
