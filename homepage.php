@@ -1,7 +1,6 @@
 <?php
     session_start();
-
-	$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
     $cleardb_server = $cleardb_url["host"];
     $cleardb_username = $cleardb_url["user"];
     $cleardb_password = $cleardb_url["pass"];
@@ -11,11 +10,16 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
+    if ((time() - $_SESSION['start_time']) > 10)
+    {
+        header('location:logout.php');
+    }
+    else
+    {
+        $_SESSION['start_time'] = time();
+
     if ($_SESSION['mail'])
     {
-        $_SESSION['start'] = time();
-        $_SESSION['expire'] = $_SESSION['start'] + (60);
-        require('timeout.php');
     $emailAdd = $_SESSION['mail'];
     $sql  = "select * from signup where pEmail =  '$emailAdd' ";
     $res = mysqli_query($conn,$sql);
@@ -223,10 +227,10 @@
     <div>
         <br>
         <div class="footer-content">
-            <a href="#">About Us</a>&emsp14; | &emsp14;
-            <a href="#">Book Flights</a>&emsp14; | &emsp14;
-            <a href="#">FAQs</a>&emsp14; | &emsp14;
-            <a href="#">Contact Us</a>
+            <a href="homepage.php">About Us</a>&emsp14; | &emsp14;
+            <a href="booking.php">Book Flights</a>&emsp14; | &emsp14;
+            <a href="faq.php">FAQs</a>&emsp14; | &emsp14;
+            <a href="contact.php">Contact Us</a>
         </div>
         <br>
         <br>
@@ -246,5 +250,6 @@
     {
         header('location:homepage.html');
     }
+}
 ?>
     
