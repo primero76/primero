@@ -16,38 +16,38 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
 { 
     if ($_POST['emailinp'] != '')
     {
-        $emailAdd = $_POST['emailinp'];
+        $emailAdd = test_input($_POST['emailinp']);
     }
     if ($_POST['passwordinp'] != '')
     {
-        $password = $_POST['passwordinp'];
+        $password = test_input($_POST['passwordinp']);
     }
     if ($_POST['mobNuminp']!='')
     {
-        $mobNum = $_POST['mobNuminp'];
+        $mobNum = test_input($_POST['mobNuminp']);
     }
     if ($_POST['f_nameinp'] !='')
     {
-        $f_name = $_POST['f_nameinp'];
+        $f_name = test_input($_POST['f_nameinp']);
     }   
     if ($_POST['l_nameinp'] !='')
     {
-        $l_name = $_POST['l_nameinp'];
+        $l_name = test_input($_POST['l_nameinp']);
     }   
     if ($_POST['dobinp'] !='')
     {
-        $dateOfBirth = $_POST['dobinp'];
+        $dateOfBirth = test_input($_POST['dobinp']);
     }
 
     if ($_POST['cityinp'] != '')
     {
-        $city= $_POST['cityinp'];
+        $city= test_input($_POST['cityinp']);
     }
     if ($_POST['genderinp'] !='')
     {
-        $gender = $_POST['genderinp'];
+        $gender = test_input($_POST['genderinp']);
     } 
-    $m_name = $_POST['m_nameinp'];
+    $m_name = test_input($_POST['m_nameinp']);
     if ($emailAdd && $password && $mobNum && $f_name && $m_name && $l_name && $city && $gender)
     { 
         $sql = "select * from signup where pEmail = '$emailAdd'";
@@ -72,6 +72,13 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         }
     } 
 }
+function test_input($data) 
+{
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Signup </title>
+    <title> Sign Up - Primero Avionics </title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
     <link rel="stylesheet" href="signup.css">
     <link rel="stylesheet" href="masterkey.css">
@@ -119,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
             <button id="btn1"><i class="fa fa-user"></i> Signup </button>
             <button id="btn2"> </button>       
         </div> 
-    <form method="post" id="form" class="form" action="<?php echo $_SERVER["PHP_SELF"];?>">
+    <form method="post" id="form" class="form" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <h3>Let's create your credentials</h3>
     <div class="one">
         <div class="two">
