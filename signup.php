@@ -59,26 +59,27 @@ function test_input($data)
   $data = htmlspecialchars($data);
   return $data;
 }
-        $sql = "select * from signup where pEmail = '$emailAdd'";
-        $result = mysqli_query($conn,$sql);
-        $num = mysqli_num_rows($result);
-        if ($num==1)
-        {
-            $mailError = "* Email id already taken";
-        }
-        else if($num==0)
-        {
-            $mailError = "*";
-            $num = rand(0,100);
-            $username = strtolower($f_name.$l_name."$num");
-            $today = date("Y-m-d");
-            $diff = date_diff(date_create($dateOfBirth), date_create($today));
-            $age = $diff->format('%y');
 
-            $insquery = "insert into signup(fName,mName,lName,pUsername,pPassword, pEmail, pNum, pCity, pGender, pDob, pAge) values ('$f_name','$m_name','$l_name','$username','$password','$emailAdd','$mobNum','$city','$gender','$dateOfBirth','$age')";
-            mysqli_query($conn,$insquery);
-            header("location:login.php");
-        }
+    $sql = "select * from signup where pEmail = '$emailAdd'";
+    $result = mysqli_query($conn,$sql);
+    $num = mysqli_num_rows($result);
+    if ($num==1)
+    {
+        $mailError = "* Email id already taken";
+    }
+    else if($num==0)
+    {
+        $mailError = "*";
+        $num = rand(0,100);
+        $username = strtolower($f_name.$l_name."$num");
+        $today = date("Y-m-d");
+        $diff = date_diff(date_create($dateOfBirth), date_create($today));
+        $age = $diff->format('%y');
+
+        $insquery = "insert into signup(fName,mName,lName,pUsername,pPassword, pEmail, pNum, pCity, pGender, pDob, pAge) values ('$f_name','$m_name','$l_name','$username','$password','$emailAdd','$mobNum','$city','$gender','$dateOfBirth','$age')";
+        mysqli_query($conn,$insquery);
+        header("location:login.php");
+    }
 
 ?>
 <!DOCTYPE html>
