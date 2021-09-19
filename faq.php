@@ -88,16 +88,7 @@ else
 <?php 
 }
 ?>                    
-<i id="bars" class="fa fa-bars"></i>
-                    <i id="cross" class="fa fa-times"></i>
-                </label>
-                <ul>
-                    <li><i class="fa fa-home"></i><a onclick="homepage.html"> About Us </a></li>
-                    <li><i class="fa fa-newspaper-o"></i><a href="booking.php"> Book</a></li>
-                    <li><i class="fa fa-tasks"></i><a href="tracking.php"> Manage</a></li>
-                    <li><i class="fa fa-address-book"></i><a href="contact.php"> Contact Us</a></li>
-                    <li><i class="fa fa-user-circle-o"></i><a class="sign" href="login.php"> Signup | Login </a></li>
-                </ul>
+             </ul>
             </nav>
         </div>
     </header>
