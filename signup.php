@@ -48,6 +48,13 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         $gender = test_input($_POST['genderinp']);
     } 
     $m_name = test_input($_POST['m_nameinp']);
+    function test_input($data) 
+    {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
     if ($emailAdd && $password && $mobNum && $f_name && $m_name && $l_name && $city && $gender)
     { 
         $sql = "select * from signup where pEmail = '$emailAdd'";
@@ -72,13 +79,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST")
         }
     } 
 }
-function test_input($data) 
-{
-  $data = trim($data);
-  $data = stripslashes($data);
-  $data = htmlspecialchars($data);
-  return $data;
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
