@@ -87,7 +87,7 @@ function test_input($data)
             <button id="btn1"><i class="fa fa-user"></i> Login </button>
             <button id="btn2"> </button>       
         </div> 
-    <form id="form" class="form" method="POST" action="<?php echo $_SERVER["PHP_SELF"];?>">
+    <form id="form" class="form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <h3> Enter Email & Password to login</h3>
     <div class="one">
         <div class="two">
