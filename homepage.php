@@ -10,7 +10,7 @@
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    if ((time() - $_SESSION['start_time']) > 10)
+    if ((time() - $_SESSION['start_time']) > 60)
     {
         header('location:logout.php');
     }
