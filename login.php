@@ -17,6 +17,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
+        $_SESSION['start_time'] = time();
         $emailAdd = $_POST['emailinp'];
         $password = $_POST['passwordinp'];
         $s  = "select * from signup where pEmail =  '$emailAdd' && pPassword = '$password' ";
