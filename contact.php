@@ -10,7 +10,6 @@ session_start();
     $query_builder = TRUE;
     // Connect to DB
     $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-    $emailAdd = $_SESSION['mail'];    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,22 +30,44 @@ session_start();
 </head>
 <body>
 <header class="main">    
-        <div class="row1"> 
+    <div class="navRow">           
             <nav>
+                <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel">
+<?php
+if (isset($_SESSION['mail']))
+{
+    $emailAdd = $_SESSION['mail'];
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
+    $res = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($res);
+
+    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $firstName = strtoupper(" ".$row["fName"]);
+
+?>
+                    <small> <i class="fa fa-user-circle-o"></i> <?php echo $firstName ?></small>
+<?php
+}
+?>
+                  <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
                 <ul>
                     <li><i class="fa fa-home"></i><a href="index.php"> About Us </a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick="alert('Already on booking page')"> Book </a></li>
                     <li><i class="fa fa-tasks"></i><a onclick="alert('Please login First')"> Manage</a></li>
                     <li><i class="fa fa-address-book"></i><a onclick="alert('Already on contact Us page')"> Contact Us</a></li>
 <?php
-if ($_SESSION['mail'])
+if (isset($_SESSION['mail']))
 {
-$sql  = "select * from signup where EMAIL =  '$emailAdd' ";
-$res = mysqli_query($conn,$sql);
-$row = mysqli_fetch_assoc($res);
+    $emailAdd = $_SESSION['mail'];
+    $sql  = "select * from signup where pEmail =  '$emailAdd' ";
+    $res = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_assoc($res);
 
-$fullName = $row["F_NAME"]." ".$row["M_NAME"]." ".$row["L_NAME"];
-$firstName = strtoupper(" ".$row["F_NAME"]);
+    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $firstName = strtoupper(" ".$row["fName"]);
 
 ?>
                     <li><i class="fa fa-user-circle-o"></i><?php echo $firstName ?> | <a href="logout.php"> LOGOUT </a> </li>
@@ -99,16 +120,16 @@ else
         <div class="contactusform">
             <h1><b>Email Us</b></h1>
             <?php
-                     if ($_SESSION['mail'])
+                    if (isset($_SESSION['mail']))
     {
     $emailAdd = $_SESSION['mail'];
-    $sql2  = "select * from signup where EMAIL =  '$emailAdd' ";
+    $sql2  = "select * from signup where pEmail =  '$emailAdd' ";
     $res2 = mysqli_query($conn,$sql2);
     $row2 = mysqli_fetch_assoc($res2);
 
-$f_name =  $row2["F_NAME"];
-$l_name =  $row2["L_NAME"];
-$number =  $row2["MOBILENUM"];
+$f_name =  $row2["fName"];
+$l_name =  $row2["lName"];
+$number =  $row2["pNum"];
 
 ?>
             <form action="contactmail.php" method="post">
