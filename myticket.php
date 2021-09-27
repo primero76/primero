@@ -25,7 +25,7 @@ session_start();
     $date = $_SESSION['date'];
     $sclass = $_SESSION['seatClass'];
     $fare = $_SESSION['ticketPrice'];
-    $time = $_SESSION['time'];
+    $time = $_SESSION['depTime1'];
     $ID = $_SESSION['tracking'];
     $flightName = $_SESSION['flyName'];
     
