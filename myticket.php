@@ -1,16 +1,8 @@
 <?php
     session_start();
 
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
+    $conn = mysqli_connect('localhost','root');
+    mysqli_select_db($conn,'flight_booking');
     
     if ($_SESSION['mail'])
     {
@@ -48,101 +40,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> BOOKING </title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
-    <title>Ticket</title>
-    <link rel="stylesheet" href="myticket.css">
+    <link rel="stylesheet" href="ticket.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<div id="pdf">
 <?php while($row2 = mysqli_fetch_assoc($res2))
 {
 ?>
-<div class='all'>
-    
-    <div class="row1" style="background-color: aliceblue;">
-        <table>
-            <tr>
-                <td>
-                    <p > FLIGHT <br> <span> <?php echo $flightName ?></span> </p>
-                </td>
-                <td>
-                    <p > DEPARTURE <br> <span> <?php echo $from ." ". $flightfrom['CITY_CODE'] ?> </span> </p>
-                </td>
-                <td>
-                    <p > DESTINATION <br> <span>  <?php echo $to ." ". $flightto['CITY_CODE'] ?> </span> </p>
-                </td>
-                <td>
-                    <p class = "last"> FLIGHT <br> <span><?php echo $flightName ?> </span> </p>
-                </td>
-            </tr>
-            
-        </table>   
-    </div>
-    <div class="row2">
-        <table>
-            <tr>
-                <td class="bigRow">
-                    <p> PASSENGER <br> <span> <?php echo $fullName?> </span> </p>
-                </td>
-                <td>
-                    
-                </td>
-                <td class="smallRow"> 
-                <p> PASSENGER <br> <span> <?php echo $fullName?> </span> </p>
-                </td>
-            </tr>
-            
-        </table>   
-    </div>
-    <div class="row3">
-        <table>
-            <tr>
-                <td>
-                    <p > DEPARTURE <br> <span> <?php echo $from ." ". $flightfrom['CITY_CODE'] ?> </span> </p>
-                </td>
-                <td>
-                    <p > DESTINATION <br> <span>  <?php echo $to ." ". $flightto['CITY_CODE'] ?> </span> </p>
-                </td>
-                <td>
-                    <p > DATE <br> <span> <?php echo $date?></span> </p>
-                </td>
-                <td  >
-                    <p class = "last" > TIME <br> <span> <?php echo $time?> </span> </p>
-                </td>
-            </tr>
-            
-        </table>   
-    </div>
-    <div class="row2">
-        <table>
-            <tr>
-                <td>
-                    <p > TRACKING ID <br> <span> <?php echo $ID?> </span> </p>
-                </td>
-                <td>
-                    <p > class <br> <span>  <?php echo $sclass?> </span> </p>
-                </td>
-                <td >
-                    <p > SEAT <br> <span> <?php echo $row2['seatNo'];?> </span> </p>
-                </td>
-                <td>
-                    <p class = "last"> PRICE <br> <span> <?php echo $fare?> </span> </p>
-                </td>
-            </tr>
-            
-        </table>   
-    </div>
-    <div class="row5">
-        <img src="AIRLINE-LOGO2.png">
-        <img src="AIRLINE-LOGO2.png" style="margin-left: 820px;"> 
-    </div>
+    <div class="container">
+        <div class="first">
+            <div class="two">
+                <div class="five">
+                    <label> FLIGHT <span> <?php echo $flightName ?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> DEPARTURE <span>  <?php echo $from ." ". $flightfrom['CITY_CODE'] ?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> DESTINATION <span> <?php echo $to ." ". $flightto['CITY_CODE'] ?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> FLIGHT <span> <?php echo $flightName ?> </span> </label> 
+                </div>          
+            </div>
+        </div>  
+        <div class="one">
+            <div class="two">
+                <div class="five">
+                    <label> PASSENGER <span> <?php echo $fullName?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label>  </label> 
+                </div>
+                <div class="five">
+                    <label>  </label> 
+                </div>
+                <div class="five">
+                <label> PASSENGER <span> <?php echo $fullName?> </span> </label> 
+                </div>          
+            </div>
+        </div>  
+        <div class="one">
+            <div class="two">
+                <div class="five">
+                <label> DEPARTURE <span>  <?php echo $from ." ". $flightfrom['CITY_CODE'] ?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> DESTINATION <span> <?php echo $to ." ". $flightto['CITY_CODE'] ?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> DATE <span> <?php echo $date?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> TIME <span> <?php echo $time?> </span> </label> 
+                </div>          
+            </div>
+        </div>  
+        <div class="one">
+            <div class="two">
+                <div class="five">
+                    <label> TRACKING ID <span> <?php echo $ID?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> CLASS <span> <?php echo $sclass?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> SEAT <span> <?php echo $row2['seatNo'];?> </span> </label> 
+                </div>
+                <div class="five">
+                    <label> PRICE <span> <?php echo $fare?> </span> </label> 
+                </div>          
+            </div>
+        </div>  
+        <div class="last">
+            <div class="two">
+                <div class="five"><img src="AIRLINE-LOGO2.png"></div>
+                <div class="five"></div>
+                <div class="five"></div>
+                <div class="five"><img src="AIRLINE-LOGO2.png"></div>       
+            </div>
+        </div>  
+ 
     </div>
     <?php
     }
     ?>
-</div>
+<script src="booking.js"></script>
 </body>
-
 </html>
 <?php
     }
