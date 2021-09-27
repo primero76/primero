@@ -71,7 +71,12 @@ label {
 h2 {
 	display: inline-block;
     margin: 50px;
-	font-size: 30px;
+	font-size: 35px;
+}
+.tr
+{
+	margin:0 50px;
+	font-size: 25px;
 }
 .five
 {
