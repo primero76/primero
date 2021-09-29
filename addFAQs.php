@@ -1,16 +1,8 @@
 <?php
     session_start();
 
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-
+    $conn = mysqli_connect('localhost','root');
+    mysqli_select_db($conn,'flight_booking');
 
     $selQ = "select * from faqs";
     $run = mysqli_query($conn,$selQ);
@@ -47,7 +39,7 @@ header('location:addFAQs.php');
                     <i id="cross" class="fa fa-times"></i>
                 </label>
                 <ul>
-                    <li><i class="fa fa-home"></i><a href=""> Create Flights </a></li>
+                    <li><i class="fa fa-home"></i><a href="allBookedFlights.php"> Booked Flights </a></li>
                     <li><i class="fa fa-newspaper-o"></i><a onclick=""> Delete Flights </a></li>
                     <li><i class="fa fa-tasks"></i><a onclick=""> Manage Flights </a></li>
                     <li><i class="fa fa-address-book"></i><a onclick="alert('Already on this page');"> Add FAQs </a></li>

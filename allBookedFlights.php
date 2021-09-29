@@ -3,52 +3,39 @@
 
     $conn = mysqli_connect('localhost','root');
     mysqli_select_db($conn,'flight_booking');
-
-    $emailAdd = "";
-    $password = "";
-    $err = "";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-        $emailAdd = $_POST['emailinp'];
-        $password = $_POST['passwordinp'];
-        $s  = "select * from admin where aMail =  '$emailAdd' && aPassword = '$password' ";
-        $result = mysqli_query($conn,$s);
-        $num = mysqli_num_rows($result);
-
-        if ($num==1){
-            header('location:adminHome.html');  
-            $_SESSION['adminMail'] = $emailAdd;        
-        }
-        else{
-            $err = "*Invalid Username or password";         
-        }
-    }
-?>  
-
+    $sql  = "select * from bookedflights";
+    $res = mysqli_query($conn,$sql);
+    
+           
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> ADMIN LOGIN </title>
+    <title> BOOKING </title>
     <link rel="icon" href="AIRLINE-LOGO2.png" type="image/gif">
-    <link rel="stylesheet" href="adminLogin.css">
+    <link rel="stylesheet" href="masterkey.css">
+    <link rel="stylesheet" href="searchFlights.css">
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="masterkey.css">
 </head>
 <body>
     <header class="main">
         <div class="row">           
             <nav>
+            <input type="checkbox" id="threebar">
+                <label for="threebar" class="checklabel">
+                    <i id="bars" class="fa fa-bars"></i>
+                    <i id="cross" class="fa fa-times"></i>
+                </label>
                 <ul>
-                    <li><i class="fa fa-home"></i><a href="#"> Create Flights </a></li>
-                    <li><i class="fa fa-newspaper-o"></i><a onclick="#"> Delete Flights </a></li>
-                    <li><i class="fa fa-tasks"></i><a onclick="#"> Manage Flights </a></li>
-                    <li><i class="fa fa-address-book"></i><a onclick="#"> Add FAQs </a></li>
-                </ul>
+                <li><i class="fa fa-home"></i><a href="allBookedFlights.php"> Booked Flights </a></li>
+                    <li><i class="fa fa-newspaper-o"></i><a onclick=""> Delete Flights </a></li>
+                    <li><i class="fa fa-tasks"></i><a onclick=""> Manage Flights </a></li>
+                    <li><i class="fa fa-address-book"></i><a href="addFAQs.php"> Add FAQs </a></li>      
+            </ul>
             </nav>
         </div>
     </header>
@@ -57,43 +44,87 @@
         <div class="namelogo">
             <img class="logo" src="AIRLINE-LOGO2.png">
             <h1 class="name"> Primero </h1>
-            <br><br>
+            <br>
+            <br>
             <h1 class="name2"> Avionics </h1>
         </div>
     </div>
     <div class="container">
         <div class="btn-box">
-            <button id="btn1"><i class="fa fa-user"></i> Admin Login </button>
-            <button id="btn2"> </button>       
+            <button id="btn1" ><i class="fa fa-plane"></i> <a href="booking.php"> Book </a> </button>
+            <button id="btn2" ><i class="fa fa-id-card"></i> <a href="tracking.php"> Flight Status </a></button> 
         </div> 
-    <form id="form" class="form" method="POST" action="<?php echo $_SERVER["PHP_SELF"];?>">
-    <h3> Enter Email & Password to login</h3>
+    
+    <h2> Booked Flights </h2>
     <div class="one">
         <div class="two">
-            <div class="three" onclick="openDivemail()">
-                <label id="emaillbl"> Email Address </label>
-                <input type="text" id="emailinp" name="emailinp">
-                <small> * </small>
+        <div class="five">
+                <label> TRACKING ID </label> 
             </div>
+            <div class="five">
+                <label> DEPARTURE </label> 
+            </div>
+            <div class="five">
+                <label> DESTINATION </label> 
+            </div>
+            <div class="five">
+                <label> DATE </label> 
+            </div>
+            <div class="five">
+                <label> TIME </label> 
+            </div>            
+            <div class="five">
+                <label> FLIGHTNAME </label> 
+            </div> 
+            <div class="five">
+                <label> STATUS </label> 
+            </div>            
         </div>
+    </div>  
+    <?php
+    while($row = mysqli_fetch_assoc($res))
+    {
+        $detailsId = $row['detailsId'];
+        $sql1  = "select * from flightdate where detailsId = $detailsId ";
+        $res1 = mysqli_query($conn,$sql1);
+        $row1 = mysqli_fetch_assoc($res1);
+        $sql2  = "SELECT * FROM `flightdetails` where flightsDetailsId = (select flightsDetailsId from flightdate where detailsId = $detailsId)";
+        $res2 = mysqli_query($conn,$sql2);
+        $row2 = mysqli_fetch_assoc($res2); 
+    ?>  
+    <div class="one_one">
         <div class="two">
-            <div class="three" onclick="openDivpassword()">
-                <label  id="passwordlbl"> Password </label> <br>
-                <input id="passwordinp" name="passwordinp" type="password">
-                <small> * </small>
+            <div class="five">
+                <label><?php echo $row['trackingId']; ?></label>
             </div>
-        </div>
-    </div>
-    <small class="err"><?php echo $err ?></small>
-    <div class="one">
-        <div class="btn-submit" id="submit">
-            <button type="submit" id= "crtAcc" onclick="show()"> Login </button>
-        </div>
+            <div class="five">
+                <label> <?php echo $row2['departure']; ?>  </label> 
+            </div>
+            <div class="five">
+                <label> <?php echo $row2['destination']; ?>  </label> 
+            </div>
+            <div class="five">
+                <label> <?php echo $row1['departureDate']; ?> </label> 
+            </div>
+            <div class="five">
+                <label id='time' name="time" value="$time"> <?php echo $row2['departureTime']; ?> </label> 
+            </div>   
+            
+            <div class="five">
+                <label> <?php echo $row2['flightName']; ?> </label> 
+            </div>   
+            <div class="five">
+                <label> ONTIME </label> 
+            </div>       
+        </div> 
     </div> 
-    <div class="last">
-        
-    </div>
-    </form>
+    <?php
+    }
+
+    ?>
+    <div class='space'>
+
+</div>
 </div>
 
 <div class="footer-wave" >           
@@ -135,11 +166,10 @@
  <p class="copyright"> Primero Avionics © 2018</p>
 </div>
 </footer>
+<script src="booking.js"></script>
+</body>
+</html>
 
-
-
-
-<script src="login.js"></script>
-
+<script src="booking.js"></script>
 </body>
 </html>
