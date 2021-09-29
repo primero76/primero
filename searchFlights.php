@@ -162,7 +162,7 @@
                 <label> <?php echo $row['flightName']; ?> </label> 
             </div> 
             <div class="five" style="border:none;">
-                <label class="selectrow" > <button type="submit"> <a href="validation.php?depID=<?php echo $row["flightsDetailsId"];?>"> Select </a> </button> </label> 
+                <button class="selectrow" type="submit"><a href="validation.php?depID=<?php echo $row["flightsDetailsId"];?>"> Select </a> </button> 
             </div>            
         </div> 
     </div> 
@@ -228,8 +228,3 @@
         header('location:login.php');
     }
 ?>
-
-
-
-$sqlQuery2 = "SELECT * from flightdate where detailsId in (SELECT detailsId from bookedflights);";
-$run2 = mysqli_query($conn,$sqlQuery2);
