@@ -1,23 +1,9 @@
 <?php
     session_start();
 
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+    $conn = mysqli_connect('localhost','root');
+    mysqli_select_db($conn,'flight_booking');
     
-    if ((time() - $_SESSION['start_time']) > 60)
-    {
-        header('location:logout.php');
-    }
-    else
-    {
-        $_SESSION['start_time'] = time();
     if ($_SESSION['mail'])
     {
     $emailAdd = $_SESSION['mail'];
@@ -44,7 +30,10 @@
     $_SESSION['ticketPrice'] = $price;
     $query1 = "SELECT * from flightdetails where departure = '$from' and destination='$to'";
     $res = mysqli_query($conn, $query1);
-    $num = mysqli_num_rows($res);
+    $num1 = mysqli_num_rows($res);
+    $query2 = "select * from flightdate where departureDate = '$date'";
+    $res2 = mysqli_query($conn, $query2);
+    $num2 = mysqli_num_rows($res2);
             
 ?> 
 <!DOCTYPE html>
@@ -96,7 +85,7 @@
             <button id="btn2" ><i class="fa fa-id-card"></i> <a href="tracking.php"> Flight Status </a></button> 
         </div> 
         <?php
-    if ($num != 0)
+    if ($num1 != 0 && $num2 != 0)
     {
     ?>
     <h2> Available Flights </h2>
@@ -135,7 +124,7 @@
         </div>
     </div>  
     <?php
-    if ($num == 0)
+    if ($num1 == 0 || $num2 == 0)
     {
     ?>
     <div class="one">
@@ -238,5 +227,9 @@
     {
         header('location:login.php');
     }
-    }
 ?>
+
+
+
+$sqlQuery2 = "SELECT * from flightdate where detailsId in (SELECT detailsId from bookedflights);";
+$run2 = mysqli_query($conn,$sqlQuery2);

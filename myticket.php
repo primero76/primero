@@ -1,15 +1,9 @@
 <?php
-session_start();
+    session_start();
 
-    $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-    $cleardb_server = $cleardb_url["host"];
-    $cleardb_username = $cleardb_url["user"];
-    $cleardb_password = $cleardb_url["pass"];
-    $cleardb_db = substr($cleardb_url["path"],1);
-    $active_group = 'default';
-    $query_builder = TRUE;
-    // Connect to DB
-    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+    $conn = mysqli_connect('localhost','root');
+    mysqli_select_db($conn,'flight_booking');
+    
     if ($_SESSION['mail'])
     {
     $emailAdd = $_SESSION['mail'];
@@ -53,9 +47,12 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <div class = "main">
+
 <?php while($row2 = mysqli_fetch_assoc($res2))
 {
 ?>
+    <br><br><br>
     <div class="container">
         <div class="first">
             <div class="two">
@@ -134,6 +131,8 @@ session_start();
     <?php
     }
     ?>
+    <br>
+    </div>
 <script src="booking.js"></script>
 </body>
 </html>
