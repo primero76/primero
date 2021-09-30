@@ -18,7 +18,7 @@
     $res = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($res);
 
-    $fullName = $row["fName"]." ".$row["mName"]." ".$row["lName"];
+    $fullName = $row["lName"]." ".$row["mName"]." ".$row["fName"];
     $firstName = strtoupper(" ".$row["fName"]);
     
     $from = $_SESSION['from'];
