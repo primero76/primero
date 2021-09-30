@@ -16,7 +16,7 @@ body
 	background-color: black;
 }
 .main
-{	
+{
 	overflow-wrap: scroll;
 	flex-wrap: wrap;
 }
@@ -79,7 +79,7 @@ h2 {
 	position: relative;
 	height: 80px;
 	align-items: center;
-    display: flex;
+	display: flex;
 	border-bottom: solid 1px #ccc;
 }
 .five:hover,.six:hover
@@ -114,12 +114,11 @@ img
 	{
 		transform: rotate(270deg);
 		width: 640px;
-		margin: -300px 0px 0px 390px;
-
+		margin: -231% 0px 0px 216%;
 	}
 	.container {
 		margin: 0px 0px 0px 0px;
-		width: 750px;
+		width: 600px;
 	}
 		label,span
 	{
@@ -129,6 +128,8 @@ img
 	{
 		height: 60px;
 		position: relative;
+		width: 147px;
+		margin-bottom: 0px;
 	}
 	.last
 	{
